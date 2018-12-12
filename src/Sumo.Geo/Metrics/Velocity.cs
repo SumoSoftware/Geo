@@ -18,6 +18,10 @@ namespace Sumo.Geo.Metrics
             Heading = new Angle(heading);
         }
 
+        public Velocity(Velocity velocity) : this(velocity.Distance, velocity.Units, velocity.Heading)
+        {
+        }
+
         public Angle Heading { get; set; }
 
         public override string ToString()

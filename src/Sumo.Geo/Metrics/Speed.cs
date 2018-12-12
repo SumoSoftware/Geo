@@ -17,6 +17,10 @@ namespace Sumo.Geo.Metrics
             Units = units;
         }
 
+        public Speed(Speed speed) : this(speed.Distance, speed.Units)
+        {
+        }
+
         public Distance Distance { get; set; }
         public UnitsOfTime Units { get; set; }
 
