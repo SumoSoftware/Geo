@@ -81,7 +81,5 @@ namespace Sumo.Geo.Geographies
         {
             throw new NotImplementedException();
         }
-
-
     }
 }
