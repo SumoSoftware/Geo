@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace Sumo.Geo.Evaluators
 {
-    public class PolygonEvaluator : GeographyEvaluator
+    public class PolygonEvaluator : RegionEvaluator
     {
         internal sealed class PolygonOptimizedLineSegment : LineSegment
         {
@@ -37,28 +37,28 @@ namespace Sumo.Geo.Evaluators
 
         public PolygonEvaluator(Polygon polygon) : base(polygon)
         {
-            if (polygon.Points.Count < 3)
+            if (polygon.Perimeter.Points.Count < 3)
             {
                 throw new Exception("polygon definition must have at least 3 points");
             }
 
             Bounds = new Rectangle(
-                new Point(polygon.Points.Max(p => p.Latitude), polygon.Points.Min(p => p.Longitude)),
-                new Point(polygon.Points.Min(p => p.Latitude), polygon.Points.Max(p => p.Longitude)));
+                new Point(polygon.Perimeter.Points.Max(p => p.Latitude), polygon.Perimeter.Points.Min(p => p.Longitude)),
+                new Point(polygon.Perimeter.Points.Min(p => p.Latitude), polygon.Perimeter.Points.Max(p => p.Longitude)));
 
-            var segments = new List<PolygonOptimizedLineSegment>(polygon.Points.Count);
+            var segments = new List<PolygonOptimizedLineSegment>(polygon.Perimeter.Points.Count);
             var i = 0;
-            for (i = 0; i < polygon.Points.Count - 1; ++i)
+            for (i = 0; i < polygon.Perimeter.Points.Count - 1; ++i)
             {
-                if (polygon.Points[i].Latitude != polygon.Points[i + 1].Latitude) // don't add horizontal points
+                if (polygon.Perimeter.Points[i].Latitude != polygon.Perimeter.Points[i + 1].Latitude) // don't add horizontal points
                 {
-                    segments.Add(new PolygonOptimizedLineSegment(polygon.Points[i], polygon.Points[i + 1]));
+                    segments.Add(new PolygonOptimizedLineSegment(polygon.Perimeter.Points[i], polygon.Perimeter.Points[i + 1]));
                 }
             }
 
-            if (polygon.Points[i].Latitude != polygon.Points[0].Latitude) // don't add horizontal points
+            if (polygon.Perimeter.Points[i].Latitude != polygon.Perimeter.Points[0].Latitude) // don't add horizontal points
             {
-                segments.Add(new PolygonOptimizedLineSegment(polygon.Points[i], polygon.Points[0]));
+                segments.Add(new PolygonOptimizedLineSegment(polygon.Perimeter.Points[i], polygon.Perimeter.Points[0]));
             }
 
             // order the segments by the west longitude because we compare slope intercept from west to east (left to right). 
@@ -68,21 +68,6 @@ namespace Sumo.Geo.Evaluators
         }
 
         private PolygonOptimizedLineSegment[] _segments;
-
-        public override double Area()
-        {
-            throw new NotImplementedException();
-        }
-
-        public override Point Centroid()
-        {
-            throw new NotImplementedException();
-        }
-
-        public override Geography Intersect(Geography geography)
-        {
-            throw new NotImplementedException();
-        }
 
         protected override bool PrecisionContains(Point point)
         {
@@ -117,11 +102,6 @@ namespace Sumo.Geo.Evaluators
                 }
             }
             return (intersections != 0) && (intersections % 2 != 0);
-        }
-
-        public override Geography Union(Geography geography)
-        {
-            throw new NotImplementedException();
         }
     }
 }

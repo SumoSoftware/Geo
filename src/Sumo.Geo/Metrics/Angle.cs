@@ -6,19 +6,18 @@ namespace Sumo.Geo.Metrics
     //https://en.wikipedia.org/wiki/Angle
     public enum UnitsOfAngle
     {
-        Undefined = 0,
-        BinaryDegree = 1,
-        ClockPosition = 2,
-        CompassPoint = 3,
-        Degree = 4,
-        Gradian = 5,
-        Milliradian = 6,
-        MinuteOfArc = 7,
-        Quadrant = 8,
-        Radian = 9,
-        SecondOfArc = 10,
-        Sextant = 11,
-        Turn = 12
+        BinaryDegree,
+        ClockPosition,
+        CompassPoint,
+        Degree,
+        Gradian,
+        Milliradian,
+        MinuteOfArc,
+        Quadrant,
+        Radian,
+        SecondOfArc,
+        Sextant,
+        Turn
     }
 
     public class Angle : IEquatable<Angle>
@@ -69,8 +68,6 @@ namespace Sumo.Geo.Metrics
             var units = Units.ToString();
             switch (Units)
             {
-                case UnitsOfAngle.Undefined:
-                    break;
                 case UnitsOfAngle.BinaryDegree:
                     break;
                 case UnitsOfAngle.ClockPosition:
@@ -96,7 +93,8 @@ namespace Sumo.Geo.Metrics
                 case UnitsOfAngle.Turn:
                     break;
                 default:
-                    break;
+                    throw new NotSupportedException();
+
             }
             return $"{Value} {units}";
         }

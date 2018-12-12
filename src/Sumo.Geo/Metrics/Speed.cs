@@ -76,7 +76,7 @@ namespace Sumo.Geo.Metrics
                     units = "day";
                     break;
                 default:
-                    break;
+                    throw new NotSupportedException();
             }
             return $"{Distance}/{units}";
         }

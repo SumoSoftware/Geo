@@ -70,7 +70,6 @@ namespace Sumo.Geo.Geographies
             //}
 
         }
-
     }
 
     public class Path : Geography
@@ -97,36 +96,47 @@ namespace Sumo.Geo.Geographies
         }
     }
 
-    public class Circle : Geography
+    public class Region: Geography
+    {
+        //public abstract Geography Union(Geography geography);
+
+        //public abstract Geography Intersect(Geography geography);
+
+        ////todo: create area type in metrics
+        //public abstract double Area();
+
+        //public abstract Point Centroid();
+    }
+
+    public class Circle : Region
     {
         public Point Center { get; set; }
         public Distance Radius { get; set; }
     }
 
-    public class Polygon : Path
+    public class Polygon : Region
     {
-        public Polygon() : base()
+        public Polygon() { }
+
+        public Polygon(Path perimeter) 
         {
+            Perimeter = perimeter ?? throw new ArgumentNullException(nameof(perimeter));
         }
 
-        public Polygon(IEnumerable<Point> points) : base(points)
-        {
-            IsClosed = true;
-        }
+        public Path Perimeter { get; set; }
     }
 
-    public class Cooridor : Path
+    public class Cooridor : Region
     {
-        public Cooridor() : base()
-        {
-        }
+        public Cooridor() { }
 
-        public Cooridor(IEnumerable<Point> points, Distance stroke) : base(points)
+        public Cooridor(Path path, Distance stroke) 
         {
+            Path = path ?? throw new ArgumentNullException(nameof(path));
             Stroke = stroke ?? throw new ArgumentNullException(nameof(stroke));
-            IsClosed = false;
         }
 
+        public Path Path { get; set; }
         public Distance Stroke { get; set; }
     }
 
@@ -137,6 +147,6 @@ namespace Sumo.Geo.Geographies
 
     public class Surface : Geography
     {
-        public Point[,] ElevationGrid { get; set; }
+        public List<Point> ElevationGrid { get; set; }
     }
 }

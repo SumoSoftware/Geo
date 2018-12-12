@@ -1,5 +1,4 @@
-﻿using Sumo.Geo.Extensions;
-using System;
+﻿using System;
 using System.Collections.Generic;
 
 namespace Sumo.Geo.Metrics
@@ -81,7 +80,7 @@ namespace Sumo.Geo.Metrics
                     units = "nmi";
                     break;
                 default:
-                    break;
+                    throw new NotSupportedException();
             }
             return $"{Value} {units}";
         }
