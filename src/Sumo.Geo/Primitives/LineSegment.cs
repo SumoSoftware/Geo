@@ -29,9 +29,9 @@ namespace Sumo.Geo.Primitives
         /// returns geodesic distance (great arc)
         /// </summary>
         /// <returns></returns>
-        public Distance GetDistance()
+        public Distance GetDistance(UnitsOfLength units = UnitsOfLength.NauticalMile)
         {
-            return Points[0].GetDistance(Points[1]);
+            return Points[0].GetDistance(Points[1], units);
         }
 
         public override string ToString()

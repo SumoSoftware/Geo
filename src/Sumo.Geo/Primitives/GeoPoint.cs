@@ -32,7 +32,7 @@ namespace Sumo.Geo.Primitives
         /// </summary>
         /// <param name="point"></param>
         /// <returns></returns>
-        public Distance GetDistance(GeoPoint point)
+        public Distance GetDistance(GeoPoint point, UnitsOfLength units = UnitsOfLength.NauticalMile)
         {
             double phi_s = Latitude.ToRadians(),
                    lamda_s = Longitude.ToRadians(),
@@ -45,7 +45,7 @@ namespace Sumo.Geo.Primitives
                 Math.Pow((Math.Cos(phi_s) * Math.Sin(phi_f) - Math.Sin(phi_s) * Math.Cos(phi_f) * Math.Cos(lamda_s - lamda_f)), 2));
             var x = Math.Sin(phi_s) * Math.Sin(phi_f) + Math.Cos(phi_s) * Math.Cos(phi_f) * Math.Cos(lamda_s - lamda_f);
             var delta = Math.Atan2(y, x);
-            return new Distance(delta.ToDegrees() * 60, UnitsOfLength.NauticalMile);
+            return new Distance(delta.ToDegrees() * 60, units);
 
             //Vincenty formula
             //phi_s = latitude_s
