@@ -30,11 +30,6 @@ namespace Sumo.Geo.Geographies
             }
         }
 
-        public override GeoPoint GetCentroid()
-        {
-            throw new NotImplementedException();
-        }
-
         protected override GeoBox GetBounds()
         {
             return new GeoBox(

@@ -30,7 +30,10 @@ namespace Sumo.Geo.Geographies
         /// calculates the centroid point of the region
         /// </summary>
         /// <returns></returns>
-        public abstract GeoPoint GetCentroid();
+        public virtual GeoPoint GetCentroid()
+        {
+            return Bounds.GetCentroid();
+        }
 
         /// <summary>
         /// returns true of the point is within the bounding box of the region

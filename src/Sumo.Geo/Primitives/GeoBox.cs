@@ -28,6 +28,13 @@ namespace Sumo.Geo.Primitives
                 point.Longitude <= SouthEast.Longitude;
         }
 
+        public GeoPoint GetCentroid()
+        {
+            return new GeoPoint(
+                (NorthWest.Latitude + SouthEast.Latitude) / 2.0,
+                (NorthWest.Longitude + SouthEast.Longitude) / 2.0);
+        }
+
         public override string ToString()
         {
             return String.Format($"[{NorthWest}, {SouthEast}]");

@@ -15,11 +15,6 @@ namespace Sumo.Geo.Geographies
 
         public GeoPath Perimeter { get; set; }
 
-        public override GeoPoint GetCentroid()
-        {
-            throw new NotImplementedException();
-        }
-
         protected override GeoBox GetBounds()
         {
             return new GeoBox(
