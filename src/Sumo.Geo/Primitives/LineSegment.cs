@@ -3,21 +3,22 @@ using System;
 
 namespace Sumo.Geo.Primitives
 {
-    public class LineSegment
+    public partial class LineSegment
     {
         public LineSegment()
         {
-            Points = new Point[2];
+            Points = new GeoPoint[2];
         }
 
-        public LineSegment(Point point1, Point point2)
+        public LineSegment(GeoPoint point1, GeoPoint point2)
         {
-            Points = new Point[] { point1, point2 };
+            Points = new GeoPoint[] { point1, point2 };
         }
 
-        public Point[] Points { get; }
+        public GeoPoint[] Points { get; }
 
-        public Distance Length()
+
+        public Distance GeodesicDistance()
         {
             return Points[0].GeodesicDistance(Points[1]);
         }

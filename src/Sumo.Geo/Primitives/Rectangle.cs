@@ -2,24 +2,24 @@
 
 namespace Sumo.Geo.Primitives
 {
-    public class Rectangle
+    public partial class Rectangle
     {
         public Rectangle()
         {
-            NorthWest = new Point();
-            SouthEast = new Point();
+            NorthWest = new GeoPoint();
+            SouthEast = new GeoPoint();
         }
 
-        public Rectangle(Point northWest, Point southEast)
+        public Rectangle(GeoPoint northWest, GeoPoint southEast)
         {
             NorthWest = northWest ?? throw new ArgumentNullException(nameof(northWest));
             SouthEast = southEast ?? throw new ArgumentNullException(nameof(southEast));
         }
 
-        public Point NorthWest { get; }
-        public Point SouthEast { get; }
+        public GeoPoint NorthWest { get; }
+        public GeoPoint SouthEast { get; }
 
-        public bool Contains(Point point)
+        public bool Contains(GeoPoint point)
         {
             return
                 point.Latitude <= NorthWest.Latitude &&
