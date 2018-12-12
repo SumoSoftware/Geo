@@ -5,7 +5,7 @@ namespace Sumo.Geo.Evaluators
 {
     public interface IRegionEvaluator
     {
-        bool Contains(Point point);
+        bool Contains(GeoPoint point);
 
         //Geography Union(Geography geography);
         //Geography Intersect(Geography geography);

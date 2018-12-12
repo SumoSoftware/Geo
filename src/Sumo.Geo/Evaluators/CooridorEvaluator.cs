@@ -9,18 +9,18 @@ namespace Sumo.Geo.Evaluators
     {
         internal sealed class OptimizedCorridorLineSegment : LineSegment
         {
-            public OptimizedCorridorLineSegment(Point point1, Point point2, double widthInNauticalMiles) :
+            public OptimizedCorridorLineSegment(GeoPoint point1, GeoPoint point2, double widthInNauticalMiles) :
                 base(point1, point2)
             {
                 // when == it's a horizontal line. is that a problem?
                 _halfWidthInNauticalMiles = widthInNauticalMiles / 2.0;
 
-                var northWest = new Point(
+                var northWest = new GeoPoint(
                     (point1.Latitude >= point2.Latitude ? point1.Latitude : point2.Latitude) + Geography.DegreesLatitudePerNauticalMile * _halfWidthInNauticalMiles,
                     point1.Longitude <= point2.Longitude ? point1.Longitude : point2.Longitude);
                 northWest.Longitude -= Geography.GetDegreesLongitudePerNauticalMile(northWest.Longitude) * _halfWidthInNauticalMiles;
 
-                var southEast = new Point(
+                var southEast = new GeoPoint(
                     (point1.Latitude <= point2.Latitude ? point1.Latitude : point2.Latitude) - Geography.DegreesLatitudePerNauticalMile * _halfWidthInNauticalMiles,
                     point1.Longitude >= point2.Longitude ? point1.Longitude : point2.Longitude);
                 southEast.Longitude += Geography.GetDegreesLongitudePerNauticalMile(southEast.Longitude) * _halfWidthInNauticalMiles;
@@ -29,12 +29,12 @@ namespace Sumo.Geo.Evaluators
 
                 // putting boxes around the end caps
                 _point1Box = new Rectangle(
-                    new Point(point1.Latitude + Geography.DegreesLatitudePerNauticalMile * _halfWidthInNauticalMiles, point1.Longitude - Geography.GetDegreesLongitudePerNauticalMile(point1.Longitude) * _halfWidthInNauticalMiles),
-                    new Point(point1.Latitude - Geography.DegreesLatitudePerNauticalMile * _halfWidthInNauticalMiles, point1.Longitude + Geography.GetDegreesLongitudePerNauticalMile(point1.Longitude) * _halfWidthInNauticalMiles));
+                    new GeoPoint(point1.Latitude + Geography.DegreesLatitudePerNauticalMile * _halfWidthInNauticalMiles, point1.Longitude - Geography.GetDegreesLongitudePerNauticalMile(point1.Longitude) * _halfWidthInNauticalMiles),
+                    new GeoPoint(point1.Latitude - Geography.DegreesLatitudePerNauticalMile * _halfWidthInNauticalMiles, point1.Longitude + Geography.GetDegreesLongitudePerNauticalMile(point1.Longitude) * _halfWidthInNauticalMiles));
 
                 _point1Box = new Rectangle(
-                    new Point(point2.Latitude + Geography.DegreesLatitudePerNauticalMile * _halfWidthInNauticalMiles, point2.Longitude - Geography.GetDegreesLongitudePerNauticalMile(point2.Longitude) * _halfWidthInNauticalMiles),
-                    new Point(point2.Latitude - Geography.DegreesLatitudePerNauticalMile * _halfWidthInNauticalMiles, point2.Longitude + Geography.GetDegreesLongitudePerNauticalMile(point2.Longitude) * _halfWidthInNauticalMiles));
+                    new GeoPoint(point2.Latitude + Geography.DegreesLatitudePerNauticalMile * _halfWidthInNauticalMiles, point2.Longitude - Geography.GetDegreesLongitudePerNauticalMile(point2.Longitude) * _halfWidthInNauticalMiles),
+                    new GeoPoint(point2.Latitude - Geography.DegreesLatitudePerNauticalMile * _halfWidthInNauticalMiles, point2.Longitude + Geography.GetDegreesLongitudePerNauticalMile(point2.Longitude) * _halfWidthInNauticalMiles));
             }
 
             private readonly double _halfWidthInNauticalMiles;
@@ -42,7 +42,7 @@ namespace Sumo.Geo.Evaluators
             private readonly Rectangle _point2Box;
             private readonly Rectangle _bounds;
 
-            public bool Contains(Point point)
+            public bool Contains(GeoPoint point)
             {
                 if (_bounds.Contains(point))
                 {
@@ -51,7 +51,7 @@ namespace Sumo.Geo.Evaluators
                 return false;
             }
 
-            public bool PrecisionContains(Point point)
+            public bool PrecisionContains(GeoPoint point)
             {
                 // check the end cap boxes around the starting and ending points first
                 var result = _point1Box.Contains(point);
@@ -120,8 +120,8 @@ namespace Sumo.Geo.Evaluators
             _widthInNauticalMiles = cooridor.Stroke.ConvertTo(Metrics.UnitsOfMeasure.NauticalMile).Value;
 
             Bounds = new Rectangle(
-                new Point(cooridor.Path.Points.Max(p => p.Latitude), cooridor.Path.Points.Min(p => p.Longitude)),
-                new Point(cooridor.Path.Points.Min(p => p.Latitude), cooridor.Path.Points.Max(p => p.Longitude)));
+                new GeoPoint(cooridor.Path.Points.Max(p => p.Latitude), cooridor.Path.Points.Min(p => p.Longitude)),
+                new GeoPoint(cooridor.Path.Points.Min(p => p.Latitude), cooridor.Path.Points.Max(p => p.Longitude)));
 
             _segments = new OptimizedCorridorLineSegment[cooridor.Path.Points.Count - 1];
             var j = 0;
@@ -134,7 +134,7 @@ namespace Sumo.Geo.Evaluators
         private readonly OptimizedCorridorLineSegment[] _segments;
         private readonly double _widthInNauticalMiles;
 
-        protected override bool PrecisionContains(Point point)
+        protected override bool PrecisionContains(GeoPoint point)
         {
             // todo: the next posible optimization would be to sort the segements 
             // in a way to allow a binary search for the nearest

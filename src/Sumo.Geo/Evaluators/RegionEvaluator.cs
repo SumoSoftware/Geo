@@ -14,7 +14,7 @@ namespace Sumo.Geo.Evaluators
         protected Region Region { get; }
         protected Rectangle Bounds { get; set; }
 
-        public bool Contains(Point point)
+        public bool Contains(GeoPoint point)
         {
             if (Bounds.Contains(point))
             {
@@ -23,6 +23,6 @@ namespace Sumo.Geo.Evaluators
             return false;
         }
 
-        protected abstract bool PrecisionContains(Point point);
+        protected abstract bool PrecisionContains(GeoPoint point);
     }
 }

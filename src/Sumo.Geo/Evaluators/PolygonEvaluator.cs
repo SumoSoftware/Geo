@@ -10,7 +10,7 @@ namespace Sumo.Geo.Evaluators
     {
         internal sealed class PolygonOptimizedLineSegment : LineSegment
         {
-            public PolygonOptimizedLineSegment(Point point1, Point point2) : base(point1, point2)
+            public PolygonOptimizedLineSegment(GeoPoint point1, GeoPoint point2) : base(point1, point2)
             {
                 EastBoundingPoint = point1.Longitude > point2.Longitude ? point1 : point2;
                 NorthBoundingPoint = point1.Latitude > point2.Latitude ? point1 : point2;
@@ -20,9 +20,9 @@ namespace Sumo.Geo.Evaluators
                 IsHorizontal = point1.Latitude == point2.Latitude;
             }
 
-            public Point EastBoundingPoint { get; }
-            public Point NorthBoundingPoint { get; }
-            public Point SouthBoundingPoint { get; }
+            public GeoPoint EastBoundingPoint { get; }
+            public GeoPoint NorthBoundingPoint { get; }
+            public GeoPoint SouthBoundingPoint { get; }
 
             /// <summary>
             /// indicates that the segment is useless for slope intercept checks
@@ -43,8 +43,8 @@ namespace Sumo.Geo.Evaluators
             }
 
             Bounds = new Rectangle(
-                new Point(polygon.Perimeter.Points.Max(p => p.Latitude), polygon.Perimeter.Points.Min(p => p.Longitude)),
-                new Point(polygon.Perimeter.Points.Min(p => p.Latitude), polygon.Perimeter.Points.Max(p => p.Longitude)));
+                new GeoPoint(polygon.Perimeter.Points.Max(p => p.Latitude), polygon.Perimeter.Points.Min(p => p.Longitude)),
+                new GeoPoint(polygon.Perimeter.Points.Min(p => p.Latitude), polygon.Perimeter.Points.Max(p => p.Longitude)));
 
             var segments = new List<PolygonOptimizedLineSegment>(polygon.Perimeter.Points.Count);
             var i = 0;
@@ -69,7 +69,7 @@ namespace Sumo.Geo.Evaluators
 
         private PolygonOptimizedLineSegment[] _segments;
 
-        protected override bool PrecisionContains(Point point)
+        protected override bool PrecisionContains(GeoPoint point)
         {
             var intersections = 0;
 

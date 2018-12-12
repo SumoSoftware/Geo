@@ -14,13 +14,13 @@ namespace Sumo.Geo.Evaluators
             var degressLongitude = Geography.GetDegreesLongitudePerNauticalMile(circle.Center.Latitude) * _radiusInNauticalMiles;
 
             Bounds = new Rectangle(
-                new Point(circle.Center.Latitude + degreesLatitude, circle.Center.Longitude - degressLongitude),
-                new Point(circle.Center.Latitude - degreesLatitude, circle.Center.Longitude + degressLongitude));
+                new GeoPoint(circle.Center.Latitude + degreesLatitude, circle.Center.Longitude - degressLongitude),
+                new GeoPoint(circle.Center.Latitude - degreesLatitude, circle.Center.Longitude + degressLongitude));
         }
 
         private readonly double _radiusInNauticalMiles;
 
-        protected override bool PrecisionContains(Point point)
+        protected override bool PrecisionContains(GeoPoint point)
         {
             return ((Circle)Region).Center.GeodesicDistance(point).ConvertTo(Metrics.UnitsOfMeasure.NauticalMile).Value <= _radiusInNauticalMiles;
         }
