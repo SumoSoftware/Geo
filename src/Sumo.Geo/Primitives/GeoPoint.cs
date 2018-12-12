@@ -17,7 +17,7 @@ namespace Sumo.Geo.Primitives
             }
         }
 
-        public GeoPoint(GeoPoint point):this(point.Latitude, point.Longitude, point.Elevation)
+        public GeoPoint(GeoPoint point) : this(point.Latitude, point.Longitude, point.Elevation)
         {
         }
 
@@ -45,7 +45,13 @@ namespace Sumo.Geo.Primitives
                 Math.Pow((Math.Cos(phi_s) * Math.Sin(phi_f) - Math.Sin(phi_s) * Math.Cos(phi_f) * Math.Cos(lamda_s - lamda_f)), 2));
             var x = Math.Sin(phi_s) * Math.Sin(phi_f) + Math.Cos(phi_s) * Math.Cos(phi_f) * Math.Cos(lamda_s - lamda_f);
             var delta = Math.Atan2(y, x);
-            return new Distance(delta.ToDegrees() * 60, units);
+            var result = new Distance(delta.ToDegrees() * 60, UnitsOfLength.NauticalMile);
+
+            if (units != UnitsOfLength.NauticalMile)
+            {
+                result = result.ConvertTo(units);
+            }
+            return result;
 
             //Vincenty formula
             //phi_s = latitude_s
