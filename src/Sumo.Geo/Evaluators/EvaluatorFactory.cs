@@ -15,9 +15,9 @@ namespace Sumo.Geo.Evaluators
             {
                 return new PolygonEvaluator(region as Polygon);
             }
-            else if (region is Cooridor)
+            else if (region is Trail)
             {
-                return new CooridorEvaluator(region as Cooridor);
+                return new TrailEvaluator(region as Trail);
             }
             else
             {
