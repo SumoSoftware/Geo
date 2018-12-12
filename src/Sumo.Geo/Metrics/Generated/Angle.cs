@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 
-
 namespace Sumo.Geo.Metrics
 {
     public partial class Angle : IEquatable<Angle>
