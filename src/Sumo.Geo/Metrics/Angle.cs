@@ -2,7 +2,7 @@
 
 namespace Sumo.Geo.Metrics
 {
-    public partial class Angle : IEquatable<Angle>
+    public partial class Angle
     {
         public Angle() { }
 
