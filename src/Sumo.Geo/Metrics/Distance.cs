@@ -12,6 +12,10 @@ namespace Sumo.Geo.Metrics
             Units = units;
         }
 
+        public Distance(Distance distance):this(distance.Value, distance.Units)
+        {
+        }
+
         public double Value { get; set; }
         public UnitsOfLength Units { get; set; }
 

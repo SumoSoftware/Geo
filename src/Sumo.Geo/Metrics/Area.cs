@@ -12,6 +12,10 @@ namespace Sumo.Geo.Metrics
             Units = units;
         }
 
+        public Area(Area area) : this(area.Value, area.Units)
+        {
+        }
+
         public double Value { get; set; }
         public UnitsOfLength Units { get; set; }
 
@@ -21,22 +25,22 @@ namespace Sumo.Geo.Metrics
             switch (Units)
             {
                 case UnitsOfLength.Foot:
-                    units = "sq ft";
+                    units = "ft2";
                     break;
                 case UnitsOfLength.Yard:
-                    units = "sq yd";
+                    units = "yd2";
                     break;
                 case UnitsOfLength.Mile:
-                    units = "sq mi";
+                    units = "mi2";
                     break;
                 case UnitsOfLength.Meter:
-                    units = "sq m";
+                    units = "m2";
                     break;
                 case UnitsOfLength.Kilometer:
-                    units = "sq km";
+                    units = "km2";
                     break;
                 case UnitsOfLength.NauticalMile:
-                    units = "sq nmi";
+                    units = "nmi2";
                     break;
                 default:
                     throw new NotSupportedException();

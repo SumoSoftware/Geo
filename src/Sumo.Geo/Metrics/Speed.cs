@@ -8,7 +8,12 @@ namespace Sumo.Geo.Metrics
 
         public Speed(Distance distance, UnitsOfTime units)
         {
-            Distance = distance ?? throw new ArgumentNullException(nameof(distance));
+            if (distance == null)
+            {
+                throw new ArgumentNullException(nameof(distance));
+            }
+
+            Distance = new Distance(distance);
             Units = units;
         }
 

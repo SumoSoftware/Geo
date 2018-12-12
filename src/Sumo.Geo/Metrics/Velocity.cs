@@ -1,4 +1,6 @@
-﻿namespace Sumo.Geo.Metrics
+﻿using System;
+
+namespace Sumo.Geo.Metrics
 {
     public partial class Velocity : Speed
     {
@@ -8,7 +10,12 @@
 
         public Velocity(Distance distance, UnitsOfTime units, Angle heading) : base(distance, units)
         {
-            Heading = heading;
+            if (heading == null)
+            {
+                throw new ArgumentNullException(nameof(heading));
+            }
+
+            Heading = new Angle(heading);
         }
 
         public Angle Heading { get; set; }
