@@ -18,7 +18,7 @@ namespace Sumo.Geo.Primitives
         {
             Latitude = point.Latitude;
             Longitude = point.Longitude;
-            Elevation = point.Elevation;
+            Elevation = new Distance(point.Elevation);
         }
 
         //todo: add validation
