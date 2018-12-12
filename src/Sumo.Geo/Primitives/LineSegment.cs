@@ -15,6 +15,14 @@ namespace Sumo.Geo.Primitives
             Points = new GeoPoint[] { point1, point2 };
         }
 
+        public LineSegment(double lat1, double lon1, double lat2, double lon2) : this (new GeoPoint(lat1, lon1), new GeoPoint(lat2, lon2))
+        {
+        }
+
+        public LineSegment(LineSegment lineSegment) : this (new GeoPoint(lineSegment.Points[0]), new GeoPoint(lineSegment.Points[1]))
+        {
+        }
+
         public GeoPoint[] Points { get; }
 
         /// <summary>

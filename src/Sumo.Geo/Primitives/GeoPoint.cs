@@ -11,14 +11,14 @@ namespace Sumo.Geo.Primitives
         {
             Latitude = latitude;
             Longitude = longitude;
-            Elevation = elevation;
+            if (elevation != null)
+            {
+                Elevation = new Distance(elevation);
+            }
         }
 
-        public GeoPoint(GeoPoint point)
+        public GeoPoint(GeoPoint point):this(point.Latitude, point.Longitude, point.Elevation)
         {
-            Latitude = point.Latitude;
-            Longitude = point.Longitude;
-            Elevation = new Distance(point.Elevation);
         }
 
         //todo: add validation
