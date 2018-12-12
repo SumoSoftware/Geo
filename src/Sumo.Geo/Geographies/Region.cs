@@ -6,26 +6,6 @@ namespace Sumo.Geo.Geographies
 {
     public abstract class Region : Geography
     {
-        private GeoBox _bounds;
-        public GeoBox Bounds
-        {
-            get
-            {
-                if (_bounds == null)
-                {
-                    _bounds = GetBounds();
-                }
-                return _bounds;
-            }
-            set => _bounds = value;
-        }
-
-        /// <summary>
-        /// calculates the bounding box of the region
-        /// </summary>
-        /// <returns></returns>
-        protected abstract GeoBox GetBounds();
-
         /// <summary>
         /// calculates the centroid point of the region
         /// </summary>

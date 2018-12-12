@@ -1,10 +1,31 @@
 ﻿using Sumo.Geo.Metrics;
+using Sumo.Geo.Primitives;
 using System;
 
 namespace Sumo.Geo.Geographies
 {
-    public class Geography
+    public abstract class Geography
     {
+        private GeoBox _bounds;
+        public GeoBox Bounds
+        {
+            get
+            {
+                if (_bounds == null)
+                {
+                    _bounds = GetBounds();
+                }
+                return _bounds;
+            }
+            set => _bounds = value;
+        }
+
+        /// <summary>
+        /// calculates the bounding box of the region
+        /// </summary>
+        /// <returns></returns>
+        protected abstract GeoBox GetBounds();
+
         // assume NM is equal to one minute of a degree.
         public const double DegreesLatitudePerNauticalMile = (1.0 / 60.0);
 
