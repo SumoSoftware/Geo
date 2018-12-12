@@ -2,15 +2,6 @@
 
 namespace Sumo.Geo.Metrics
 {
-    public enum UnitsOfTime
-    {
-        Second,
-        Minute,
-        Hour,
-        Milisecond,
-        Day
-    }
-
     public partial class Speed
     {
         public Speed() { }

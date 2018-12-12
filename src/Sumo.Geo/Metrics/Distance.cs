@@ -2,50 +2,40 @@
 
 namespace Sumo.Geo.Metrics
 {
-    public enum UnitsOfMeasure
-    {
-        Foot,
-        Yard,
-        Mile,
-        Meter,
-        Kilometer,
-        NauticalMile
-    }
-
     public partial class Distance
     {
         public Distance() { }
 
-        public Distance(double value, UnitsOfMeasure units)
+        public Distance(double value, UnitsOfLength units)
         {
             Value = value;
             Units = units;
         }
 
         public double Value { get; set; }
-        public UnitsOfMeasure Units { get; set; }
+        public UnitsOfLength Units { get; set; }
 
         public override string ToString()
         {
             var units = String.Empty;
             switch (Units)
             {
-                case UnitsOfMeasure.Foot:
+                case UnitsOfLength.Foot:
                     units = "ft";
                     break;
-                case UnitsOfMeasure.Yard:
+                case UnitsOfLength.Yard:
                     units = "yd";
                     break;
-                case UnitsOfMeasure.Mile:
+                case UnitsOfLength.Mile:
                     units = "mi";
                     break;
-                case UnitsOfMeasure.Meter:
+                case UnitsOfLength.Meter:
                     units = "m";
                     break;
-                case UnitsOfMeasure.Kilometer:
+                case UnitsOfLength.Kilometer:
                     units = "km";
                     break;
-                case UnitsOfMeasure.NauticalMile:
+                case UnitsOfLength.NauticalMile:
                     units = "nmi";
                     break;
                 default:
@@ -54,7 +44,7 @@ namespace Sumo.Geo.Metrics
             return $"{Value} {units}";
         }
 
-        public Distance ConvertTo(UnitsOfMeasure units)
+        public Distance ConvertTo(UnitsOfLength units)
         {
             if (Units == units)
             {
@@ -63,17 +53,17 @@ namespace Sumo.Geo.Metrics
 
             switch (units)
             {
-                case UnitsOfMeasure.Foot:
+                case UnitsOfLength.Foot:
                     return new Distance(Value.ToFoot(Units), units);
-                case UnitsOfMeasure.Yard:
+                case UnitsOfLength.Yard:
                     return new Distance(Value.ToYard(Units), units);
-                case UnitsOfMeasure.Mile:
+                case UnitsOfLength.Mile:
                     return new Distance(Value.ToMile(Units), units);
-                case UnitsOfMeasure.Meter:
+                case UnitsOfLength.Meter:
                     return new Distance(Value.ToMeter(Units), units);
-                case UnitsOfMeasure.Kilometer:
+                case UnitsOfLength.Kilometer:
                     return new Distance(Value.ToKilometer(Units), units);
-                case UnitsOfMeasure.NauticalMile:
+                case UnitsOfLength.NauticalMile:
                     return new Distance(Value.ToNauticalMile(Units), units);
                 default:
                     throw new NotSupportedException();

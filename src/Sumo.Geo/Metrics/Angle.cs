@@ -3,23 +3,6 @@ using System.Collections.Generic;
 
 namespace Sumo.Geo.Metrics
 {
-    //https://en.wikipedia.org/wiki/Angle
-    public enum UnitsOfAngle
-    {
-        BinaryDegree,
-        ClockPosition,
-        CompassPoint,
-        Degree,
-        Gradian,
-        Milliradian,
-        MinuteOfArc,
-        Quadrant,
-        Radian,
-        SecondOfArc,
-        Sextant,
-        Turn
-    }
-
     public partial class Angle : IEquatable<Angle>
     {
         public Angle() { }
