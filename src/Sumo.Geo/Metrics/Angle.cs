@@ -20,7 +20,7 @@ namespace Sumo.Geo.Metrics
         Turn
     }
 
-    public class Angle : IEquatable<Angle>
+    public partial class Angle : IEquatable<Angle>
     {
         public Angle() { }
 
