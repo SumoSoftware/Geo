@@ -40,6 +40,12 @@ namespace Sumo.Geo.GeoFences
             }
         }
 
+        public Geography Remove(Geography geography)
+        {
+            //todo: add remove feature
+            throw new NotImplementedException();
+        }
+
         public List<Geography> FindNearby(double latitude, double longitude)
         {
             return _index[(int)Math.Floor(latitude) + 90, (int)Math.Floor(longitude) + 180];
