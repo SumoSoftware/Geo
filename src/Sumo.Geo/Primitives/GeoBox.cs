@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Sumo.Geo.Metrics;
+using System;
 
 namespace Sumo.Geo.Primitives
 {
@@ -33,6 +34,14 @@ namespace Sumo.Geo.Primitives
             return new GeoPoint(
                 (NorthWest.Latitude + SouthEast.Latitude) / 2.0,
                 (NorthWest.Longitude + SouthEast.Longitude) / 2.0);
+        }
+
+        public Area GetArea()
+        {
+            var widthSegment = new LineSegment(NorthWest, new GeoPoint(NorthWest.Latitude, SouthEast.Longitude));
+            var heightSegment = new LineSegment(NorthWest, new GeoPoint(SouthEast.Latitude, NorthWest.Longitude));
+            var area = widthSegment.GetDistance().Value * heightSegment.GetDistance().Value;
+            return new Area(area, UnitsOfLength.NauticalMile);
         }
 
         public override string ToString()
