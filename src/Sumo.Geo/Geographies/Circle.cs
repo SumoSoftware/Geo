@@ -48,5 +48,12 @@ namespace Sumo.Geo.Geographies
         {
             throw new System.NotImplementedException();
         }
+
+        public override Area GetArea()
+        {
+            // pi r^2
+            var area = Math.PI * Math.Pow(Radius.Value, 2);
+            return new Area(area, Radius.Units);
+        }
     }
 }

@@ -79,7 +79,7 @@ namespace Sumo.Geo.Geographies
 
         public virtual Area GetArea()
         {
-            throw new NotImplementedException();
+            return Bounds.GetArea();
         }
     }
 }
