@@ -4,8 +4,10 @@ using System.Collections.Generic;
 
 namespace Sumo.Geo.GeoFences
 {
-    public partial class GeoFence
+    public partial class GeoFence : Geography
     {
+        private readonly SpatialIndex _index = new SpatialIndex();
+
         public List<Region> Regions { get; set; }
 
         public bool Contains(GeoPoint point)
@@ -18,6 +20,11 @@ namespace Sumo.Geo.GeoFences
                 }
             }
             return false;
+        }
+
+        protected override GeoBox GetBounds()
+        {
+            throw new System.NotImplementedException();
         }
     }
 }
