@@ -42,7 +42,7 @@ namespace Sumo.Geo.Evaluators
                 throw new Exception("polygon definition must have at least 3 points");
             }
 
-            Bounds = new Rectangle(
+            Bounds = new GeoBox(
                 new GeoPoint(polygon.Perimeter.Points.Max(p => p.Latitude), polygon.Perimeter.Points.Min(p => p.Longitude)),
                 new GeoPoint(polygon.Perimeter.Points.Min(p => p.Latitude), polygon.Perimeter.Points.Max(p => p.Longitude)));
 

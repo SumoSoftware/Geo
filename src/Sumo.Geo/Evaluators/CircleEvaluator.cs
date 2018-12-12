@@ -8,12 +8,12 @@ namespace Sumo.Geo.Evaluators
     {
         public CircleEvaluator(Circle circle) : base(circle)
         {
-            _radiusInNauticalMiles = circle.Radius.ConvertTo(Metrics.UnitsOfMeasure.NauticalMile).Value;
+            _radiusInNauticalMiles = circle.Radius.ConvertTo(Metrics.UnitsOfLength.NauticalMile).Value;
 
             var degreesLatitude = Geography.DegreesLatitudePerNauticalMile * _radiusInNauticalMiles;
             var degressLongitude = Geography.GetDegreesLongitudePerNauticalMile(circle.Center.Latitude) * _radiusInNauticalMiles;
 
-            Bounds = new Rectangle(
+            Bounds = new GeoBox(
                 new GeoPoint(circle.Center.Latitude + degreesLatitude, circle.Center.Longitude - degressLongitude),
                 new GeoPoint(circle.Center.Latitude - degreesLatitude, circle.Center.Longitude + degressLongitude));
         }
@@ -22,7 +22,7 @@ namespace Sumo.Geo.Evaluators
 
         protected override bool PrecisionContains(GeoPoint point)
         {
-            return ((Circle)Region).Center.GeodesicDistance(point).ConvertTo(Metrics.UnitsOfMeasure.NauticalMile).Value <= _radiusInNauticalMiles;
+            return ((Circle)Region).Center.GetDistance(point).ConvertTo(Metrics.UnitsOfLength.NauticalMile).Value <= _radiusInNauticalMiles;
         }
     }
 }

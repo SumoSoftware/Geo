@@ -12,7 +12,7 @@ namespace Sumo.Geo.Evaluators
         }
 
         protected Region Region { get; }
-        protected Rectangle Bounds { get; set; }
+        protected GeoBox Bounds { get; set; }
 
         public bool Contains(GeoPoint point)
         {

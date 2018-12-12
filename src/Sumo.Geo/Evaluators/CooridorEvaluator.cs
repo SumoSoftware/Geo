@@ -25,22 +25,22 @@ namespace Sumo.Geo.Evaluators
                     point1.Longitude >= point2.Longitude ? point1.Longitude : point2.Longitude);
                 southEast.Longitude += Geography.GetDegreesLongitudePerNauticalMile(southEast.Longitude) * _halfWidthInNauticalMiles;
 
-                _bounds = new Rectangle(northWest, southEast);
+                _bounds = new GeoBox(northWest, southEast);
 
                 // putting boxes around the end caps
-                _point1Box = new Rectangle(
+                _point1Box = new GeoBox(
                     new GeoPoint(point1.Latitude + Geography.DegreesLatitudePerNauticalMile * _halfWidthInNauticalMiles, point1.Longitude - Geography.GetDegreesLongitudePerNauticalMile(point1.Longitude) * _halfWidthInNauticalMiles),
                     new GeoPoint(point1.Latitude - Geography.DegreesLatitudePerNauticalMile * _halfWidthInNauticalMiles, point1.Longitude + Geography.GetDegreesLongitudePerNauticalMile(point1.Longitude) * _halfWidthInNauticalMiles));
 
-                _point1Box = new Rectangle(
+                _point1Box = new GeoBox(
                     new GeoPoint(point2.Latitude + Geography.DegreesLatitudePerNauticalMile * _halfWidthInNauticalMiles, point2.Longitude - Geography.GetDegreesLongitudePerNauticalMile(point2.Longitude) * _halfWidthInNauticalMiles),
                     new GeoPoint(point2.Latitude - Geography.DegreesLatitudePerNauticalMile * _halfWidthInNauticalMiles, point2.Longitude + Geography.GetDegreesLongitudePerNauticalMile(point2.Longitude) * _halfWidthInNauticalMiles));
             }
 
             private readonly double _halfWidthInNauticalMiles;
-            private readonly Rectangle _point1Box;
-            private readonly Rectangle _point2Box;
-            private readonly Rectangle _bounds;
+            private readonly GeoBox _point1Box;
+            private readonly GeoBox _point2Box;
+            private readonly GeoBox _bounds;
 
             public bool Contains(GeoPoint point)
             {
@@ -117,9 +117,9 @@ namespace Sumo.Geo.Evaluators
 
         public CooridorEvaluator(Cooridor cooridor) : base(cooridor)
         {
-            _widthInNauticalMiles = cooridor.Stroke.ConvertTo(Metrics.UnitsOfMeasure.NauticalMile).Value;
+            _widthInNauticalMiles = cooridor.Stroke.ConvertTo(Metrics.UnitsOfLength.NauticalMile).Value;
 
-            Bounds = new Rectangle(
+            Bounds = new GeoBox(
                 new GeoPoint(cooridor.Path.Points.Max(p => p.Latitude), cooridor.Path.Points.Min(p => p.Longitude)),
                 new GeoPoint(cooridor.Path.Points.Min(p => p.Latitude), cooridor.Path.Points.Max(p => p.Longitude)));
 
