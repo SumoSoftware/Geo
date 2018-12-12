@@ -17,10 +17,13 @@ namespace Sumo.Geo.Primitives
 
         public GeoPoint[] Points { get; }
 
-
-        public Distance GeodesicDistance()
+        /// <summary>
+        /// returns geodesic distance (great arc)
+        /// </summary>
+        /// <returns></returns>
+        public Distance GetDistance()
         {
-            return Points[0].GeodesicDistance(Points[1]);
+            return Points[0].GetDistance(Points[1]);
         }
 
         public override string ToString()

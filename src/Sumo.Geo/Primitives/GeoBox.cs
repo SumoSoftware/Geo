@@ -2,15 +2,15 @@
 
 namespace Sumo.Geo.Primitives
 {
-    public partial class Rectangle
+    public partial class GeoBox
     {
-        public Rectangle()
+        public GeoBox()
         {
             NorthWest = new GeoPoint();
             SouthEast = new GeoPoint();
         }
 
-        public Rectangle(GeoPoint northWest, GeoPoint southEast)
+        public GeoBox(GeoPoint northWest, GeoPoint southEast)
         {
             NorthWest = northWest ?? throw new ArgumentNullException(nameof(northWest));
             SouthEast = southEast ?? throw new ArgumentNullException(nameof(southEast));

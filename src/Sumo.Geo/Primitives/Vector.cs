@@ -18,7 +18,6 @@ namespace Sumo.Geo.Primitives
         public Distance Magnitude { get; set; }
         public GeoPoint Origin { get; set; }
 
-
         public override string ToString()
         {
             return String.Format($"{Origin}, {Heading}, {Magnitude}");

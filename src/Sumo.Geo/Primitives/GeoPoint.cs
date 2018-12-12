@@ -1,22 +1,20 @@
 ﻿using Sumo.Geo.Metrics;
 using System;
-using System.Collections;
-using System.Collections.Generic;
 
 namespace Sumo.Geo.Primitives
 {
-    public partial class GeoPoint 
+    public partial class GeoPoint
     {
         public GeoPoint() { }
 
-        public GeoPoint(double latitude, double longitude, Distance elevation = null) 
+        public GeoPoint(double latitude, double longitude, Distance elevation = null)
         {
             Latitude = latitude;
             Longitude = longitude;
             Elevation = elevation;
         }
 
-        public GeoPoint(GeoPoint point) 
+        public GeoPoint(GeoPoint point)
         {
             Latitude = point.Latitude;
             Longitude = point.Longitude;
@@ -29,7 +27,12 @@ namespace Sumo.Geo.Primitives
 
         public Distance Elevation { get; set; }
 
-        public Distance GeodesicDistance(GeoPoint point)
+        /// <summary>
+        /// returns geodesic distance (great arc)
+        /// </summary>
+        /// <param name="point"></param>
+        /// <returns></returns>
+        public Distance GetDistance(GeoPoint point)
         {
             double phi_s = Latitude.ToRadians(),
                    lamda_s = Longitude.ToRadians(),
@@ -37,11 +40,11 @@ namespace Sumo.Geo.Primitives
                    lamda_f = point.Longitude.ToRadians();
 
             // Vincenty formula
-            double y = 
-                Math.Sqrt(Math.Pow((Math.Cos(phi_f) * Math.Sin(lamda_s - lamda_f)), 2) + 
+            var y =
+                Math.Sqrt(Math.Pow((Math.Cos(phi_f) * Math.Sin(lamda_s - lamda_f)), 2) +
                 Math.Pow((Math.Cos(phi_s) * Math.Sin(phi_f) - Math.Sin(phi_s) * Math.Cos(phi_f) * Math.Cos(lamda_s - lamda_f)), 2));
-            double x = Math.Sin(phi_s) * Math.Sin(phi_f) + Math.Cos(phi_s) * Math.Cos(phi_f) * Math.Cos(lamda_s - lamda_f);
-            double delta = Math.Atan2(y, x);
+            var x = Math.Sin(phi_s) * Math.Sin(phi_f) + Math.Cos(phi_s) * Math.Cos(phi_f) * Math.Cos(lamda_s - lamda_f);
+            var delta = Math.Atan2(y, x);
             return new Distance(delta.ToDegrees() * 60, UnitsOfMeasure.NauticalMile);
 
             //Vincenty formula
