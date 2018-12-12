@@ -32,7 +32,7 @@ namespace Sumo.Geo.Evaluators
                     new GeoPoint(point1.Latitude + Geography.DegreesLatitudePerNauticalMile * _halfWidthInNauticalMiles, point1.Longitude - Geography.GetDegreesLongitudePerNauticalMile(point1.Longitude) * _halfWidthInNauticalMiles),
                     new GeoPoint(point1.Latitude - Geography.DegreesLatitudePerNauticalMile * _halfWidthInNauticalMiles, point1.Longitude + Geography.GetDegreesLongitudePerNauticalMile(point1.Longitude) * _halfWidthInNauticalMiles));
 
-                _point1Box = new GeoBox(
+                _point2Box = new GeoBox(
                     new GeoPoint(point2.Latitude + Geography.DegreesLatitudePerNauticalMile * _halfWidthInNauticalMiles, point2.Longitude - Geography.GetDegreesLongitudePerNauticalMile(point2.Longitude) * _halfWidthInNauticalMiles),
                     new GeoPoint(point2.Latitude - Geography.DegreesLatitudePerNauticalMile * _halfWidthInNauticalMiles, point2.Longitude + Geography.GetDegreesLongitudePerNauticalMile(point2.Longitude) * _halfWidthInNauticalMiles));
             }
