@@ -1,7 +1,5 @@
 ﻿using Sumo.Geo.Metrics;
-using Sumo.Geo.Primitives;
 using System;
-using System.Collections.Generic;
 
 namespace Sumo.Geo.Geographies
 {
@@ -70,83 +68,5 @@ namespace Sumo.Geo.Geographies
             //}
 
         }
-    }
-
-    public class Path : Geography
-    {
-        public Path() { }
-
-        public Path(IEnumerable<Point> points)
-        {
-            if (points == null)
-            {
-                throw new ArgumentNullException(nameof(points));
-            }
-
-            Points = new List<Point>(points);
-        }
-
-        public List<Point> Points { get; }
-
-        public bool IsClosed { get; set; }
-
-        public override string ToString()
-        {
-            return $"[{String.Join(",", Points)}]";
-        }
-    }
-
-    public class Region: Geography
-    {
-        //public abstract Geography Union(Geography geography);
-
-        //public abstract Geography Intersect(Geography geography);
-
-        ////todo: create area type in metrics
-        //public abstract double Area();
-
-        //public abstract Point Centroid();
-    }
-
-    public class Circle : Region
-    {
-        public Point Center { get; set; }
-        public Distance Radius { get; set; }
-    }
-
-    public class Polygon : Region
-    {
-        public Polygon() { }
-
-        public Polygon(Path perimeter) 
-        {
-            Perimeter = perimeter ?? throw new ArgumentNullException(nameof(perimeter));
-        }
-
-        public Path Perimeter { get; set; }
-    }
-
-    public class Cooridor : Region
-    {
-        public Cooridor() { }
-
-        public Cooridor(Path path, Distance stroke) 
-        {
-            Path = path ?? throw new ArgumentNullException(nameof(path));
-            Stroke = stroke ?? throw new ArgumentNullException(nameof(stroke));
-        }
-
-        public Path Path { get; set; }
-        public Distance Stroke { get; set; }
-    }
-
-    public class ContourMap : Geography
-    {
-        public List<Polygon> ContourLines { get; set; }
-    }
-
-    public class Surface : Geography
-    {
-        public List<Point> ElevationGrid { get; set; }
     }
 }
