@@ -22,7 +22,7 @@ namespace Sumo.Geo.Evaluators
 
         protected override bool PrecisionContains(GeoPoint point)
         {
-            return ((Circle)Region).Center.GetDistance(point).ConvertTo(Metrics.UnitsOfLength.NauticalMile).Value <= _radiusInNauticalMiles;
+            return ((Circle)Region).Center.GetDistance(point, Metrics.UnitsOfLength.NauticalMile).Value <= _radiusInNauticalMiles;
         }
     }
 }
