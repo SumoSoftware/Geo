@@ -30,31 +30,31 @@ namespace Sumo.Geo.Primitives
         public bool HasElevation { get => Elevation != null; }
         public Distance Elevation { get; set; }
 
-        /// <summary>
-        /// bounds exists exclusively for indexing and it creates a weird behavior, but I don't see a better way at the moment
-        /// </summary>
-        private GeoBox _bounds;
-        public GeoBox Bounds
-        {
-            get
-            {
-                if (_bounds == null)
-                {
-                    _bounds = GetBounds();
-                }
-                return _bounds;
-            }
-            set => _bounds = value;
-        }
+        ///// <summary>
+        ///// bounds exists exclusively for indexing and it creates a weird behavior, but I don't see a better way at the moment
+        ///// </summary>
+        //private GeoBox _bounds;
+        //public GeoBox Bounds
+        //{
+        //    get
+        //    {
+        //        if (_bounds == null)
+        //        {
+        //            _bounds = GetBounds();
+        //        }
+        //        return _bounds;
+        //    }
+        //    set => _bounds = value;
+        //}
 
-        /// <summary>
-        /// calculates the bounding box of the geo entity
-        /// </summary>
-        /// <returns></returns>
-        private GeoBox GetBounds()
-        {
-            return new GeoBox(this, this);
-        }
+        ///// <summary>
+        ///// calculates the bounding box of the geo entity
+        ///// </summary>
+        ///// <returns></returns>
+        //private GeoBox GetBounds()
+        //{
+        //    return new GeoBox(this, this);
+        //}
 
         private Distance GetDistance(double latitude1, double longitude1, double latitude2, double longitude2, UnitsOfLength units = UnitsOfLength.NauticalMile)
         {

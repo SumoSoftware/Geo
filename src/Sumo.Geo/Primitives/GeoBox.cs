@@ -20,8 +20,6 @@ namespace Sumo.Geo.Primitives
         public GeoPoint NorthWest { get; }
         public GeoPoint SouthEast { get; }
 
-        public GeoBox Bounds { get => this; set { } }
-
         private GeoPoint _centroid;
         public GeoPoint Centroid
         {
@@ -35,8 +33,6 @@ namespace Sumo.Geo.Primitives
                 return _centroid;
             }
         }
-
-        GeoPoint IGeoRegion.Centroid => throw new NotImplementedException();
 
         public bool Contains(GeoPoint point)
         {
@@ -96,46 +92,6 @@ namespace Sumo.Geo.Primitives
         }
 
         public IGeoRegion GetUnion(IGeoRegion region)
-        {
-            throw new NotImplementedException();
-        }
-
-        bool IGeoRegion.Contains(GeoPoint point)
-        {
-            throw new NotImplementedException();
-        }
-
-        bool IGeoRegion.Contains(IGeoRegion region)
-        {
-            throw new NotImplementedException();
-        }
-
-        Area IGeoRegion.GetArea()
-        {
-            throw new NotImplementedException();
-        }
-
-        IGeoRegion IGeoRegion.GetIntersection(IGeoRegion region)
-        {
-            throw new NotImplementedException();
-        }
-
-        IGeoRegion IGeoRegion.GetUnion(IGeoRegion region)
-        {
-            throw new NotImplementedException();
-        }
-
-        Distance IGeoEntity.GetDistance(GeoPoint point, UnitsOfLength units)
-        {
-            throw new NotImplementedException();
-        }
-
-        bool IGeoEntity.IsWithinRange(GeoPoint point, Distance range)
-        {
-            throw new NotImplementedException();
-        }
-
-        Displacement IGeoEntity.GetDisplacement(GeoPoint point, UnitsOfLength units)
         {
             throw new NotImplementedException();
         }

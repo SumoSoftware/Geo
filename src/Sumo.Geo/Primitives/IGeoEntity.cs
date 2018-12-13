@@ -27,7 +27,5 @@ namespace Sumo.Geo.Primitives
         /// <param name="entity"></param>
         /// <returns></returns>
         Displacement GetDisplacement(GeoPoint point, UnitsOfLength units = UnitsOfLength.NauticalMile);
-
-        GeoBox Bounds { get; set; }
     }
 }
