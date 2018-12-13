@@ -38,10 +38,9 @@ namespace Sumo.Geo.Primitives
 
         public Area GetArea()
         {
-            var widthSegment = new LineSegment(NorthWest, new GeoPoint(NorthWest.Latitude, SouthEast.Longitude));
-            var heightSegment = new LineSegment(NorthWest, new GeoPoint(SouthEast.Latitude, NorthWest.Longitude));
-            var area = widthSegment.GetDistance().Value * heightSegment.GetDistance().Value;
-            return new Area(area, UnitsOfLength.NauticalMile);
+            var width = NorthWest.GetDistance(NorthWest.Latitude, SouthEast.Longitude);
+            var height = NorthWest.GetDistance(SouthEast.Latitude, NorthWest.Longitude);
+            return new Area(width.Value * height.Value, UnitsOfLength.NauticalMile);
         }
 
         public override string ToString()

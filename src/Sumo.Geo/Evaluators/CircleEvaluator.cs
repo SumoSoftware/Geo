@@ -12,10 +12,6 @@ namespace Sumo.Geo.Evaluators
 
             var degreesLatitude = Geography.DegreesLatitudePerNauticalMile * _radiusInNauticalMiles;
             var degressLongitude = Geography.GetDegreesLongitudePerNauticalMile(circle.Center.Latitude) * _radiusInNauticalMiles;
-
-            Bounds = new GeoBox(
-                new GeoPoint(circle.Center.Latitude + degreesLatitude, circle.Center.Longitude - degressLongitude),
-                new GeoPoint(circle.Center.Latitude - degreesLatitude, circle.Center.Longitude + degressLongitude));
         }
 
         private readonly double _radiusInNauticalMiles;

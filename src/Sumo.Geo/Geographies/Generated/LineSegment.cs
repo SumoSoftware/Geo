@@ -1,10 +1,11 @@
-﻿using System;
+﻿using Sumo.Geo.Primitives;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Sumo.Geo.Primitives
+namespace Sumo.Geo.Geographies
 {
-    public partial class LineSegment : IEquatable<LineSegment>
+    public partial class LineSegment : Geography, IEquatable<LineSegment>
     {
         public override bool Equals(object obj)
         {

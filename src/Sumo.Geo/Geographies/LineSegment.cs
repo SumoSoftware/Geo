@@ -1,9 +1,11 @@
 ﻿using Sumo.Geo.Metrics;
+using Sumo.Geo.Primitives;
 using System;
+using System.Linq;
 
-namespace Sumo.Geo.Primitives
+namespace Sumo.Geo.Geographies
 {
-    public partial class LineSegment
+    public partial class LineSegment: Geography
     {
         public LineSegment()
         {
@@ -37,6 +39,13 @@ namespace Sumo.Geo.Primitives
         public override string ToString()
         {
             return String.Format($"[{Points[0]}, {Points[1]}]");
+        }
+
+        protected override GeoBox GetBounds()
+        {
+            return new GeoBox(
+                new GeoPoint(Points.Max(p => p.Latitude), Points.Min(p => p.Longitude)),
+                new GeoPoint(Points.Min(p => p.Latitude), Points.Max(p => p.Longitude)));
         }
     }
 }

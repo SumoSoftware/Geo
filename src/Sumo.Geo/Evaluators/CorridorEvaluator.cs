@@ -119,10 +119,6 @@ namespace Sumo.Geo.Evaluators
         {
             _widthInNauticalMiles = cooridor.Stroke.ConvertTo(Metrics.UnitsOfLength.NauticalMile).Value;
 
-            Bounds = new GeoBox(
-                new GeoPoint(cooridor.Path.Points.Max(p => p.Latitude), cooridor.Path.Points.Min(p => p.Longitude)),
-                new GeoPoint(cooridor.Path.Points.Min(p => p.Latitude), cooridor.Path.Points.Max(p => p.Longitude)));
-
             _segments = new OptimizedCorridorLineSegment[cooridor.Path.Points.Count - 1];
             var j = 0;
             for (var i = 0; i < cooridor.Path.Points.Count - 2; ++i)

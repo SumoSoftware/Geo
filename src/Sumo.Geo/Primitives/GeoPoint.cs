@@ -29,17 +29,12 @@ namespace Sumo.Geo.Primitives
 
         public Distance Elevation { get; set; }
 
-        /// <summary>
-        /// returns geodesic distance (great arc)
-        /// </summary>
-        /// <param name="point"></param>
-        /// <returns></returns>
-        public Distance GetDistance(GeoPoint point, UnitsOfLength units = UnitsOfLength.NauticalMile)
+        public Distance GetDistance(double latitude, double longitude, UnitsOfLength units = UnitsOfLength.NauticalMile)
         {
             double phi_s = Latitude.ToRadians(),
-                   lamda_s = Longitude.ToRadians(),
-                   phi_f = point.Latitude.ToRadians(),
-                   lamda_f = point.Longitude.ToRadians();
+               lamda_s = Longitude.ToRadians(),
+               phi_f = latitude.ToRadians(),
+               lamda_f = longitude.ToRadians();
 
             // Vincenty formula
             var y =
@@ -75,6 +70,20 @@ namespace Sumo.Geo.Primitives
             //a = sin^2(dlat/2) + cos(lat1) * cos(lat2) * sin^2(dlon/2)
             //c = 2 * arcsin(min(1,sqrt(a)))
             //d = R * c
+        }
+
+        /// <summary>
+        /// returns geodesic distance (great arc)
+        /// </summary>
+        /// <param name="point"></param>
+        /// <returns></returns>
+        public Distance GetDistance(GeoPoint point, UnitsOfLength units = UnitsOfLength.NauticalMile)
+        {
+            if (point == null)
+            {
+                throw new ArgumentNullException(nameof(point));
+            }
+            return GetDistance(point.Latitude, point.Longitude, units);
         }
 
         public override string ToString()

@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Sumo.Geo.Primitives
+namespace Sumo.Geo.Geographies
 {
-    public partial class GeoPath : IEquatable<GeoPath>
+    public partial class GeoPath : Geography, IEquatable<GeoPath>
     {
         public override bool Equals(object obj)
         {

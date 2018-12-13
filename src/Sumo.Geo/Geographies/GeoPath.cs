@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using Sumo.Geo.Primitives;
 
-namespace Sumo.Geo.Primitives
+namespace Sumo.Geo.Geographies
 {
-    public partial class GeoPath 
+    public partial class GeoPath : Geography
     {
         public GeoPath() { }
 
@@ -24,6 +26,13 @@ namespace Sumo.Geo.Primitives
         public override string ToString()
         {
             return $"[{String.Join(",", Points)}]";
+        }
+
+        protected override GeoBox GetBounds()
+        {
+            return new GeoBox(
+                new GeoPoint(Points.Max(p => p.Latitude), Points.Min(p => p.Longitude)),
+                new GeoPoint(Points.Min(p => p.Latitude), Points.Max(p => p.Longitude)));
         }
     }
 }

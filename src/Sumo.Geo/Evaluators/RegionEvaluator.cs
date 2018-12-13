@@ -15,11 +15,10 @@ namespace Sumo.Geo.Evaluators
         }
 
         protected Region Region { get; }
-        protected GeoBox Bounds { get; set; }
 
         public bool Contains(GeoPoint point)
         {
-            if (Bounds.Contains(point))
+            if (Region.Bounds.Contains(point))
             {
                 return PrecisionContains(point);
             }

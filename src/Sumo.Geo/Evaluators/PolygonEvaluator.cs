@@ -42,10 +42,6 @@ namespace Sumo.Geo.Evaluators
                 throw new Exception("polygon definition must have at least 3 points");
             }
 
-            Bounds = new GeoBox(
-                new GeoPoint(polygon.Perimeter.Points.Max(p => p.Latitude), polygon.Perimeter.Points.Min(p => p.Longitude)),
-                new GeoPoint(polygon.Perimeter.Points.Min(p => p.Latitude), polygon.Perimeter.Points.Max(p => p.Longitude)));
-
             var segments = new List<PolygonOptimizedLineSegment>(polygon.Perimeter.Points.Count);
             var i = 0;
             for (i = 0; i < polygon.Perimeter.Points.Count - 1; ++i)
