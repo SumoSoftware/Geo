@@ -1,8 +1,9 @@
 ﻿using Sumo.Geo.Metrics;
+using System;
 
 namespace Sumo.Geo.Primitives
 {
-    public interface IGeoEntity
+    public interface IGeoEntity 
     {
         /// <summary>
         /// returns geodesic distance (great arc) between the entity and the provided GeoPoint
@@ -26,5 +27,7 @@ namespace Sumo.Geo.Primitives
         /// <param name="entity"></param>
         /// <returns></returns>
         Displacement GetDisplacement(GeoPoint point, UnitsOfLength units = UnitsOfLength.NauticalMile);
+
+        GeoBox Bounds { get; set; }
     }
 }

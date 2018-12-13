@@ -3,7 +3,7 @@ using System;
 
 namespace Sumo.Geo.Primitives
 {
-    public partial class GeoBox
+    public partial class GeoBox : IGeoRegion
     {
         public GeoBox()
         {
@@ -20,6 +20,24 @@ namespace Sumo.Geo.Primitives
         public GeoPoint NorthWest { get; }
         public GeoPoint SouthEast { get; }
 
+        public GeoBox Bounds { get => this; set { } }
+
+        private GeoPoint _centroid;
+        public GeoPoint Centroid
+        {
+            get
+            {
+                if (_centroid == null)
+                {
+                    _centroid = GetCentroid();
+                }
+
+                return _centroid;
+            }
+        }
+
+        GeoPoint IGeoRegion.Centroid => throw new NotImplementedException();
+
         public bool Contains(GeoPoint point)
         {
             return
@@ -29,7 +47,16 @@ namespace Sumo.Geo.Primitives
                 point.Longitude <= SouthEast.Longitude;
         }
 
-        public GeoPoint GetCentroid()
+        public bool Contains(IGeoRegion region)
+        {
+            return
+                NorthWest.Longitude <= region.Bounds.NorthWest.Longitude &&
+                NorthWest.Latitude >= region.Bounds.NorthWest.Latitude &&
+                SouthEast.Longitude >= region.Bounds.SouthEast.Longitude &&
+                SouthEast.Latitude <= region.Bounds.SouthEast.Latitude;
+        }
+
+        private GeoPoint GetCentroid()
         {
             return new GeoPoint(
                 (NorthWest.Latitude + SouthEast.Latitude) / 2.0,
@@ -46,6 +73,76 @@ namespace Sumo.Geo.Primitives
         public override string ToString()
         {
             return String.Format($"[{NorthWest}, {SouthEast}]");
+        }
+
+        public Distance GetDistance(GeoPoint point, UnitsOfLength units = UnitsOfLength.NauticalMile)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool IsWithinRange(GeoPoint point, Distance range)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Displacement GetDisplacement(GeoPoint point, UnitsOfLength units = UnitsOfLength.NauticalMile)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IGeoRegion GetIntersection(IGeoRegion region)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IGeoRegion GetUnion(IGeoRegion region)
+        {
+            throw new NotImplementedException();
+        }
+
+        bool IGeoRegion.Contains(GeoPoint point)
+        {
+            throw new NotImplementedException();
+        }
+
+        bool IGeoRegion.Contains(IGeoRegion region)
+        {
+            throw new NotImplementedException();
+        }
+
+        Area IGeoRegion.GetArea()
+        {
+            throw new NotImplementedException();
+        }
+
+        IGeoRegion IGeoRegion.GetIntersection(IGeoRegion region)
+        {
+            throw new NotImplementedException();
+        }
+
+        IGeoRegion IGeoRegion.GetUnion(IGeoRegion region)
+        {
+            throw new NotImplementedException();
+        }
+
+        Distance IGeoEntity.GetDistance(GeoPoint point, UnitsOfLength units)
+        {
+            throw new NotImplementedException();
+        }
+
+        bool IGeoEntity.IsWithinRange(GeoPoint point, Distance range)
+        {
+            throw new NotImplementedException();
+        }
+
+        Displacement IGeoEntity.GetDisplacement(GeoPoint point, UnitsOfLength units)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool Intersects(IGeoRegion region)
+        {
+            throw new NotImplementedException();
         }
     }
 }
