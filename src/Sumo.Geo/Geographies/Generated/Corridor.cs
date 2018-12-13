@@ -17,7 +17,7 @@ namespace Sumo.Geo.Geographies
             return other != null &&
                    base.Equals(other) &&
                    _widthInNauticalMiles == other._widthInNauticalMiles &&
-                   EqualityComparer<GeoPath>.Default.Equals(Path, other.Path) &&
+                   EqualityComparer<Path>.Default.Equals(Path, other.Path) &&
                    EqualityComparer<Distance>.Default.Equals(_stroke, other._stroke) &&
                    EqualityComparer<Distance>.Default.Equals(Stroke, other.Stroke);
         }
@@ -27,7 +27,7 @@ namespace Sumo.Geo.Geographies
             var hashCode = 1611417865;
             hashCode = hashCode * -1521134295 + base.GetHashCode();
             hashCode = hashCode * -1521134295 + _widthInNauticalMiles.GetHashCode();
-            hashCode = hashCode * -1521134295 + EqualityComparer<GeoPath>.Default.GetHashCode(Path);
+            hashCode = hashCode * -1521134295 + EqualityComparer<Path>.Default.GetHashCode(Path);
             hashCode = hashCode * -1521134295 + EqualityComparer<Distance>.Default.GetHashCode(_stroke);
             hashCode = hashCode * -1521134295 + EqualityComparer<Distance>.Default.GetHashCode(Stroke);
             return hashCode;

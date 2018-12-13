@@ -5,11 +5,11 @@ using Sumo.Geo.Primitives;
 
 namespace Sumo.Geo.Geographies
 {
-    public partial class GeoPath : Geography
+    public partial class Path : Geography
     {
-        public GeoPath() { }
+        public Path() { }
 
-        public GeoPath(IEnumerable<GeoPoint> points)
+        public Path(IEnumerable<GeoPoint> points)
         {
             if (points == null)
             {

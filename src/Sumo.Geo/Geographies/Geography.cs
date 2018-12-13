@@ -28,6 +28,25 @@ namespace Sumo.Geo.Geographies
         /// <returns></returns>
         protected abstract GeoBox GetBounds();
 
+        /// <summary>
+        /// calculates the centroid point of the region
+        /// </summary>
+        /// <returns></returns>
+        public virtual GeoPoint GetCentroid()
+        {
+            return Bounds.GetCentroid();
+        }
+
+        /// <summary>
+        /// returns true of the point is within the bounding box of the region
+        /// </summary>
+        /// <param name="point"></param>
+        /// <returns></returns>
+        public virtual bool IsNear(GeoPoint point)
+        {
+            return Bounds.Contains(point);
+        }
+
         // assume NM is equal to one minute of a degree.
         public const double DegreesLatitudePerNauticalMile = (1.0 / 60.0);
 

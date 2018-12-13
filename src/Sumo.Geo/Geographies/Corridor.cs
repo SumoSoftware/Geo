@@ -9,7 +9,7 @@ namespace Sumo.Geo.Geographies
     {
         public Corridor() { }
 
-        public Corridor(GeoPath path, Distance stroke)
+        public Corridor(Path path, Distance stroke)
         {
             Path = path ?? throw new ArgumentNullException(nameof(path));
             Stroke = stroke ?? throw new ArgumentNullException(nameof(stroke));
@@ -17,7 +17,7 @@ namespace Sumo.Geo.Geographies
 
         private double _widthInNauticalMiles;
 
-        public GeoPath Path { get; set; }
+        public Path Path { get; set; }
 
         private Distance _stroke;
         public Distance Stroke

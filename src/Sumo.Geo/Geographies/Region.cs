@@ -7,25 +7,6 @@ namespace Sumo.Geo.Geographies
     public abstract class Region : Geography
     {
         /// <summary>
-        /// calculates the centroid point of the region
-        /// </summary>
-        /// <returns></returns>
-        public virtual GeoPoint GetCentroid()
-        {
-            return Bounds.GetCentroid();
-        }
-
-        /// <summary>
-        /// returns true of the point is within the bounding box of the region
-        /// </summary>
-        /// <param name="point"></param>
-        /// <returns></returns>
-        public bool IsNear(GeoPoint point)
-        {
-            return Bounds.Contains(point);
-        }
-
-        /// <summary>
         /// returns true if the point is precisly within the region
         /// checks near first to bypass complex logic
         /// </summary>

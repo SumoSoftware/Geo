@@ -1,17 +1,18 @@
-﻿using System;
+﻿using Sumo.Geo.Primitives;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace Sumo.Geo.Geographies
 {
-    public partial class GeoPath : Geography, IEquatable<GeoPath>
+    public partial class Path : Geography, IEquatable<Path>
     {
         public override bool Equals(object obj)
         {
-            return Equals(obj as GeoPath);
+            return Equals(obj as Path);
         }
 
-        public bool Equals(GeoPath other)
+        public bool Equals(Path other)
         {
             return other != null &&
                    Points.SequenceEqual(other.Points) &&
@@ -26,12 +27,12 @@ namespace Sumo.Geo.Geographies
             return hashCode;
         }
 
-        public static bool operator ==(GeoPath path1, GeoPath path2)
+        public static bool operator ==(Path path1, Path path2)
         {
-            return EqualityComparer<GeoPath>.Default.Equals(path1, path2);
+            return EqualityComparer<Path>.Default.Equals(path1, path2);
         }
 
-        public static bool operator !=(GeoPath path1, GeoPath path2)
+        public static bool operator !=(Path path1, Path path2)
         {
             return !(path1 == path2);
         }

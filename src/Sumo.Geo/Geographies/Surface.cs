@@ -5,7 +5,7 @@ namespace Sumo.Geo.Geographies
 {
     public class Surface : Geography
     {
-        public GeoPath Elevations { get; set; }
+        public Path Elevations { get; set; }
 
         protected override GeoBox GetBounds()
         {

@@ -15,14 +15,14 @@ namespace Sumo.Geo.Geographies
         {
             return other != null &&
                    base.Equals(other) &&
-                   EqualityComparer<GeoPath>.Default.Equals(Perimeter, other.Perimeter);
+                   EqualityComparer<Path>.Default.Equals(Perimeter, other.Perimeter);
         }
 
         public override int GetHashCode()
         {
             var hashCode = -510461622;
             hashCode = hashCode * -1521134295 + base.GetHashCode();
-            hashCode = hashCode * -1521134295 + EqualityComparer<GeoPath>.Default.GetHashCode(Perimeter);
+            hashCode = hashCode * -1521134295 + EqualityComparer<Path>.Default.GetHashCode(Perimeter);
             return hashCode;
         }
 

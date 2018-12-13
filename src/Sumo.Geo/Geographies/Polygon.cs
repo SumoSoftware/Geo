@@ -9,12 +9,12 @@ namespace Sumo.Geo.Geographies
     {
         public Polygon() { }
 
-        public Polygon(GeoPath perimeter)
+        public Polygon(Path perimeter)
         {
             Perimeter = perimeter ?? throw new ArgumentNullException(nameof(perimeter));
         }
 
-        public GeoPath Perimeter { get; set; }
+        public Path Perimeter { get; set; }
 
         protected override GeoBox GetBounds()
         {
