@@ -5,7 +5,7 @@ using System;
 
 namespace Sumo.Geo.Primitives
 {
-    public partial class GeoPoint
+    public partial class GeoPoint : IGeoEntity
     {
         public GeoPoint() { }
 
@@ -29,12 +29,12 @@ namespace Sumo.Geo.Primitives
 
         public Distance Elevation { get; set; }
 
-        public Distance GetDistance(double latitude, double longitude, UnitsOfLength units = UnitsOfLength.NauticalMile)
+        private Distance GetDistance(double latitude1, double longitude1, double latitude2, double longitude2, UnitsOfLength units = UnitsOfLength.NauticalMile)
         {
-            double phi_s = Latitude.ToRadians(),
-               lamda_s = Longitude.ToRadians(),
-               phi_f = latitude.ToRadians(),
-               lamda_f = longitude.ToRadians();
+            double phi_s = latitude1.ToRadians(),
+               lamda_s = longitude1.ToRadians(),
+               phi_f = latitude2.ToRadians(),
+               lamda_f = longitude2.ToRadians();
 
             // Vincenty formula
             var y =
@@ -77,13 +77,62 @@ namespace Sumo.Geo.Primitives
         /// </summary>
         /// <param name="point"></param>
         /// <returns></returns>
+        public Distance GetDistance(double latitude, double longitude, UnitsOfLength units = UnitsOfLength.NauticalMile)
+        {
+            return GetDistance(Latitude, Longitude, latitude, longitude, units);
+        }
+
+        /// <summary>
+        /// returns geodesic distance (great arc)
+        /// </summary>
+        /// <param name="point"></param>
+        /// <returns></returns>
         public Distance GetDistance(GeoPoint point, UnitsOfLength units = UnitsOfLength.NauticalMile)
         {
             if (point == null)
             {
                 throw new ArgumentNullException(nameof(point));
             }
+
             return GetDistance(point.Latitude, point.Longitude, units);
+        }
+
+        public Angle GetAngle(double latitude, double longitude)
+        {
+            var xDelta = GetDistance(Latitude, Longitude, latitude, Longitude, UnitsOfLength.NauticalMile);
+            var yDelta = GetDistance(Latitude, Longitude, Latitude, longitude, UnitsOfLength.NauticalMile);
+            var degrees = Math.Atan2(yDelta.Value, xDelta.Value).ToDegrees();
+            return new Angle(degrees, UnitsOfAngle.Degree);
+        }
+
+        public Angle GetAngle(GeoPoint point)
+        {
+            if (point == null)
+            {
+                throw new ArgumentNullException(nameof(point));
+            }
+
+            return GetAngle(point.Latitude, point.Longitude);
+        }
+
+        public Displacement GetDisplacement(double latitude, double longitude, UnitsOfLength units = UnitsOfLength.NauticalMile)
+        {
+            return new Displacement(this, GetAngle(latitude, longitude), GetDistance(latitude, longitude, units));
+        }
+
+        public Displacement GetDisplacement(GeoPoint point, UnitsOfLength units = UnitsOfLength.NauticalMile)
+        {
+            if (point == null)
+            {
+                throw new ArgumentNullException(nameof(point));
+            }
+
+            return GetDisplacement(point.Latitude, point.Longitude, units);
+        }
+
+        public bool IsWithinRange(GeoPoint point, Distance range)
+        {
+            return GetDistance(point, range.Units) <= range;
         }
 
         public override string ToString()
@@ -94,5 +143,6 @@ namespace Sumo.Geo.Primitives
             }
             return String.Format($"({Latitude.ToString("F5")}, {Longitude.ToString("F5")})");
         }
+
     }
 }
