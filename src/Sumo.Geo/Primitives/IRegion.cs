@@ -8,19 +8,19 @@ namespace Sumo.Geo.Primitives
         High
     }
 
-    public interface IGeoRegion : IGeography
+    public interface IRegion : IGeography
     {
         GeoPoint Centroid { get; }
 
         bool Contains(GeoPoint point, GeoPositionPrecision precision = GeoPositionPrecision.High);
-        bool Contains(IGeoRegion region, GeoPositionPrecision precision = GeoPositionPrecision.High);
+        bool Contains(IRegion region, GeoPositionPrecision precision = GeoPositionPrecision.High);
 
-        bool Intersects(IGeoRegion region);
+        bool Intersects(IRegion region);
 
         Area GetArea();
 
-        IGeoRegion GetIntersection(IGeoRegion region);
-        IGeoRegion GetUnion(IGeoRegion region);
+        IRegion GetIntersection(IRegion region);
+        IRegion GetUnion(IRegion region);
 
         /// <summary>
         /// northwest bounding point

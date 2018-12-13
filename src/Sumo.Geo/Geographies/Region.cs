@@ -4,7 +4,7 @@ using System;
 
 namespace Sumo.Geo.Geographies
 {
-    public abstract class Region : Geography, IGeoRegion
+    public abstract class Region : Geography, IRegion
     {
         #region bounds
         private GeoPoint _northWest;
@@ -94,7 +94,7 @@ namespace Sumo.Geo.Geographies
             return true;
         }
 
-        public bool Contains(IGeoRegion region, GeoPositionPrecision precision = GeoPositionPrecision.High)
+        public bool Contains(IRegion region, GeoPositionPrecision precision = GeoPositionPrecision.High)
         {
             // just check the bouding box for low precision
             var result =
@@ -113,7 +113,7 @@ namespace Sumo.Geo.Geographies
         /// </summary>
         /// <param name="point"></param>
         /// <returns></returns>
-        protected virtual bool PrecisionContains(IGeoRegion region)
+        protected virtual bool PrecisionContains(IRegion region)
         {
             return true;
         }
@@ -126,17 +126,17 @@ namespace Sumo.Geo.Geographies
             return new Area(width.Value * height.Value, UnitsOfLength.NauticalMile);
         }
 
-        public virtual bool Intersects(IGeoRegion region)
+        public virtual bool Intersects(IRegion region)
         {
             throw new NotImplementedException();
         }
 
-        public virtual IGeoRegion GetIntersection(IGeoRegion region)
+        public virtual IRegion GetIntersection(IRegion region)
         {
             throw new NotImplementedException();
         }
 
-        public virtual IGeoRegion GetUnion(IGeoRegion region)
+        public virtual IRegion GetUnion(IRegion region)
         {
             throw new NotImplementedException();
         }
