@@ -5,24 +5,11 @@ using System.Linq;
 
 namespace Sumo.Geo.Geographies
 {
-    public partial class Polygon : Region, IEquatable<Polygon>
+    /// <summary>
+    /// polygon is a closed path
+    /// </summary>
+    public partial class Polygon : Path, IEquatable<Polygon>
     {
-        public Polygon() { }
-
-        public Polygon(Path perimeter)
-        {
-            Perimeter = perimeter ?? throw new ArgumentNullException(nameof(perimeter));
-        }
-
-        public Path Perimeter { get; set; }
-
-        protected override GeoBox GetBounds()
-        {
-            return new GeoBox(
-                new GeoPoint(Perimeter.Points.Max(p => p.Latitude), Perimeter.Points.Min(p => p.Longitude)),
-                new GeoPoint(Perimeter.Points.Min(p => p.Latitude), Perimeter.Points.Max(p => p.Longitude)));
-        }
-
         protected override bool PrecisionContains(GeoPoint point)
         {
             throw new NotImplementedException();

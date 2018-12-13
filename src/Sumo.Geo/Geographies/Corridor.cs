@@ -1,23 +1,20 @@
 ﻿using Sumo.Geo.Metrics;
 using Sumo.Geo.Primitives;
 using System;
-using System.Linq;
+using System.Collections.Generic;
 
 namespace Sumo.Geo.Geographies
 {
-    public partial class Corridor : Region
+    public partial class Corridor : GeoPointCollection, IEquatable<Corridor>
     {
         public Corridor() { }
 
-        public Corridor(Path path, Distance stroke)
+        public Corridor(IEnumerable<GeoPoint> points, Distance stroke) : base(points)
         {
-            Path = path ?? throw new ArgumentNullException(nameof(path));
             Stroke = stroke ?? throw new ArgumentNullException(nameof(stroke));
         }
 
         private double _widthInNauticalMiles;
-
-        public Path Path { get; set; }
 
         private Distance _stroke;
         public Distance Stroke
@@ -28,13 +25,6 @@ namespace Sumo.Geo.Geographies
                 _stroke = value;
                 _widthInNauticalMiles = Stroke.ConvertTo(UnitsOfLength.NauticalMile).Value;
             }
-        }
-
-        protected override GeoBox GetBounds()
-        {
-            return new GeoBox(
-                new GeoPoint(Path.Points.Max(p => p.Latitude), Path.Points.Min(p => p.Longitude)),
-                new GeoPoint(Path.Points.Min(p => p.Latitude), Path.Points.Max(p => p.Longitude)));
         }
 
         protected override bool PrecisionContains(GeoPoint point)

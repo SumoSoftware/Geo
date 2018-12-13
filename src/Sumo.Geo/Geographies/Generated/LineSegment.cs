@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace Sumo.Geo.Geographies
 {
-    public partial class LineSegment : Geography, IEquatable<LineSegment>
+    public partial class LineSegment : Region, IEquatable<LineSegment>
     {
         public override bool Equals(object obj)
         {

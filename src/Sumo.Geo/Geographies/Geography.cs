@@ -6,47 +6,8 @@ using System;
 
 namespace Sumo.Geo.Geographies
 {
-    public abstract partial class Geography
+    public abstract class Geography : IGeography
     {
-        private GeoBox _bounds;
-        public GeoBox Bounds
-        {
-            get
-            {
-                if (_bounds == null)
-                {
-                    _bounds = GetBounds();
-                }
-                return _bounds;
-            }
-            set => _bounds = value;
-        }
-
-        /// <summary>
-        /// calculates the bounding box of the region
-        /// </summary>
-        /// <returns></returns>
-        protected abstract GeoBox GetBounds();
-
-        /// <summary>
-        /// calculates the centroid point of the region
-        /// </summary>
-        /// <returns></returns>
-        public virtual GeoPoint GetCentroid()
-        {
-            return Bounds.GetCentroid();
-        }
-
-        /// <summary>
-        /// returns true of the point is within the bounding box of the region
-        /// </summary>
-        /// <param name="point"></param>
-        /// <returns></returns>
-        public virtual bool IsNear(GeoPoint point)
-        {
-            return Bounds.Contains(point);
-        }
-
         // assume NM is equal to one minute of a degree.
         public const double DegreesLatitudePerNauticalMile = (1.0 / 60.0);
 
@@ -110,5 +71,11 @@ namespace Sumo.Geo.Geographies
             //}
 
         }
+
+        public abstract Displacement GetDisplacement(GeoPoint point, UnitsOfLength units = UnitsOfLength.NauticalMile);
+
+        public abstract Distance GetDistance(GeoPoint point, UnitsOfLength units = UnitsOfLength.NauticalMile);
+
+        public abstract bool IsWithinRange(GeoPoint point, Distance range);
     }
 }

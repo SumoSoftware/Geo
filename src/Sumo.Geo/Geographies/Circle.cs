@@ -29,19 +29,18 @@ namespace Sumo.Geo.Geographies
             }
         }
 
-        public override GeoPoint GetCentroid()
+        protected override GeoPoint GetCentroid()
         {
             return Center;
         }
 
-        protected override GeoBox GetBounds()
+        protected override void SetBounds()
         {
             var degreesLatitude = Geography.DegreesLatitudePerNauticalMile * _radiusInNauticalMiles;
             var degressLongitude = Geography.GetDegreesLongitudePerNauticalMile(Center.Latitude) * _radiusInNauticalMiles;
 
-            return new GeoBox(
-                new GeoPoint(Center.Latitude + degreesLatitude, Center.Longitude - degressLongitude),
-                new GeoPoint(Center.Latitude - degreesLatitude, Center.Longitude + degressLongitude));
+            NorthWest = new GeoPoint(Center.Latitude + degreesLatitude, Center.Longitude - degressLongitude);
+            SouthEast = new GeoPoint(Center.Latitude - degreesLatitude, Center.Longitude + degressLongitude);
         }
 
         protected override bool PrecisionContains(GeoPoint point)

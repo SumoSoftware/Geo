@@ -7,7 +7,7 @@ namespace Sumo.Geo.Geographies
     {
         public List<Polygon> ContourLines { get; set; }
 
-        protected override GeoBox GetBounds()
+        protected override Box GetBounds()
         {
             throw new System.NotImplementedException();
         }

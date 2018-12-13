@@ -1,9 +1,8 @@
 ﻿using Sumo.Geo.Metrics;
-using System;
 
 namespace Sumo.Geo.Primitives
 {
-    public interface IGeoEntity 
+    public interface IGeography
     {
         /// <summary>
         /// returns geodesic distance (great arc) between the entity and the provided GeoPoint

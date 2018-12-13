@@ -5,7 +5,7 @@ using System;
 
 namespace Sumo.Geo.Primitives
 {
-    public partial class GeoPoint : IGeoEntity
+    public partial class GeoPoint : IGeography
     {
         public GeoPoint() { }
 
@@ -132,7 +132,7 @@ namespace Sumo.Geo.Primitives
             return new Angle(degrees, UnitsOfAngle.Degree);
         }
 
-        public Angle GetAngle(GeoPoint point)
+        public Angle GetHeading(GeoPoint point)
         {
             if (point == null)
             {

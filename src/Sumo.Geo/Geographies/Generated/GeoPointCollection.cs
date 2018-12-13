@@ -5,34 +5,32 @@ using System.Linq;
 
 namespace Sumo.Geo.Geographies
 {
-    public partial class Path : Geography, IEquatable<Path>
+    public partial class GeoPointCollection : Region, IEquatable<GeoPointCollection>
     {
         public override bool Equals(object obj)
         {
-            return Equals(obj as Path);
+            return Equals(obj as GeoPointCollection);
         }
 
-        public bool Equals(Path other)
+        public bool Equals(GeoPointCollection other)
         {
             return other != null &&
-                   Points.SequenceEqual(other.Points) &&
-                   IsClosed == other.IsClosed;
+                   Points.SequenceEqual(other.Points);
         }
 
         public override int GetHashCode()
         {
             var hashCode = 87000715;
             hashCode = hashCode * -1521134295 + EqualityComparer<List<GeoPoint>>.Default.GetHashCode(Points);
-            hashCode = hashCode * -1521134295 + IsClosed.GetHashCode();
             return hashCode;
         }
 
-        public static bool operator ==(Path path1, Path path2)
+        public static bool operator ==(GeoPointCollection path1, GeoPointCollection path2)
         {
-            return EqualityComparer<Path>.Default.Equals(path1, path2);
+            return EqualityComparer<GeoPointCollection>.Default.Equals(path1, path2);
         }
 
-        public static bool operator !=(Path path1, Path path2)
+        public static bool operator !=(GeoPointCollection path1, GeoPointCollection path2)
         {
             return !(path1 == path2);
         }

@@ -1,16 +1,17 @@
-﻿using System;
+﻿using Sumo.Geo.Primitives;
+using System;
 using System.Collections.Generic;
 
-namespace Sumo.Geo.Primitives
+namespace Sumo.Geo.Geographies
 {
-    public partial class GeoBox : IEquatable<GeoBox>
+    public partial class Box : IEquatable<Box>
     {
         public override bool Equals(object obj)
         {
-            return Equals(obj as GeoBox);
+            return Equals(obj as Box);
         }
 
-        public bool Equals(GeoBox other)
+        public bool Equals(Box other)
         {
             return other != null &&
                    EqualityComparer<GeoPoint>.Default.Equals(NorthWest, other.NorthWest) &&
@@ -25,12 +26,12 @@ namespace Sumo.Geo.Primitives
             return hashCode;
         }
 
-        public static bool operator ==(GeoBox rectangle1, GeoBox rectangle2)
+        public static bool operator ==(Box rectangle1, Box rectangle2)
         {
-            return EqualityComparer<GeoBox>.Default.Equals(rectangle1, rectangle2);
+            return EqualityComparer<Box>.Default.Equals(rectangle1, rectangle2);
         }
 
-        public static bool operator !=(GeoBox rectangle1, GeoBox rectangle2)
+        public static bool operator !=(Box rectangle1, Box rectangle2)
         {
             return !(rectangle1 == rectangle2);
         }

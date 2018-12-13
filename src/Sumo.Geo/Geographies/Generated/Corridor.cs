@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace Sumo.Geo.Geographies
 {
-    public partial class Corridor : Region, IEquatable<Corridor>
+    public partial class Corridor : GeoPointCollection, IEquatable<Corridor>
     {
         public override bool Equals(object obj)
         {
@@ -17,17 +17,15 @@ namespace Sumo.Geo.Geographies
             return other != null &&
                    base.Equals(other) &&
                    _widthInNauticalMiles == other._widthInNauticalMiles &&
-                   EqualityComparer<Path>.Default.Equals(Path, other.Path) &&
                    EqualityComparer<Distance>.Default.Equals(_stroke, other._stroke) &&
                    EqualityComparer<Distance>.Default.Equals(Stroke, other.Stroke);
         }
 
         public override int GetHashCode()
         {
-            var hashCode = 1611417865;
+            var hashCode = 1217976947;
             hashCode = hashCode * -1521134295 + base.GetHashCode();
             hashCode = hashCode * -1521134295 + _widthInNauticalMiles.GetHashCode();
-            hashCode = hashCode * -1521134295 + EqualityComparer<Path>.Default.GetHashCode(Path);
             hashCode = hashCode * -1521134295 + EqualityComparer<Distance>.Default.GetHashCode(_stroke);
             hashCode = hashCode * -1521134295 + EqualityComparer<Distance>.Default.GetHashCode(Stroke);
             return hashCode;
