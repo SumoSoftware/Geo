@@ -1,6 +1,8 @@
 ﻿using Sumo.Geo.Metrics;
 using System;
 
+//todo: all primitives should be serializable for storage in mongo, docdb, json or xml files
+
 namespace Sumo.Geo.Primitives
 {
     public partial class GeoPoint

@@ -2,6 +2,8 @@
 using Sumo.Geo.Primitives;
 using System;
 
+//todo: consider exporting geographies to kml
+
 namespace Sumo.Geo.Geographies
 {
     public abstract partial class Geography
