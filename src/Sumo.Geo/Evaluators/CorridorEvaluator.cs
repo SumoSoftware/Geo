@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace Sumo.Geo.Evaluators
 {
-    public class TrailEvaluator : RegionEvaluator
+    public class CorridorEvaluator : RegionEvaluator
     {
         internal sealed class OptimizedCorridorLineSegment : LineSegment
         {
@@ -115,7 +115,7 @@ namespace Sumo.Geo.Evaluators
             }
         }
 
-        public TrailEvaluator(Trail cooridor) : base(cooridor)
+        public CorridorEvaluator(Corridor cooridor) : base(cooridor)
         {
             _widthInNauticalMiles = cooridor.Stroke.ConvertTo(Metrics.UnitsOfLength.NauticalMile).Value;
 

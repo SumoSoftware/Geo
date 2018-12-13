@@ -73,7 +73,8 @@ namespace Sumo.Geo.Evaluators
         {
             var intersections = 0;
 
-            // skip the line segments with no east portion of the position - they're useless - (binary search might be faster)
+            // skip the line segments with no east portion of the position - they're useless 
+            // (binary search might be faster)
             var indexStart = 0;
             for (var i = 0; i < _segments.Length; ++i)
             {

@@ -5,11 +5,11 @@ using System.Linq;
 
 namespace Sumo.Geo.Geographies
 {
-    public class Trail : Region
+    public partial class Corridor : Region
     {
-        public Trail() { }
+        public Corridor() { }
 
-        public Trail(GeoPath path, Distance stroke)
+        public Corridor(GeoPath path, Distance stroke)
         {
             Path = path ?? throw new ArgumentNullException(nameof(path));
             Stroke = stroke ?? throw new ArgumentNullException(nameof(stroke));
