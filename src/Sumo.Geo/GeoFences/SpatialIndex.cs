@@ -40,10 +40,22 @@ namespace Sumo.Geo.GeoFences
             }
         }
 
-        public Geography Remove(Geography geography)
+        public void Remove(Geography geography)
         {
-            //todo: add remove feature
-            throw new NotImplementedException();
+            var vMinimumLatitude = (int)Math.Floor(geography.Bounds.NorthWest.Latitude) + 90; // top
+            var vMaximumLatitude = (int)Math.Floor(geography.Bounds.SouthEast.Latitude) + 90; // bottom
+
+            var vMinimumLongitude = (int)Math.Floor(geography.Bounds.NorthWest.Longitude) + 180; // left
+            var vMaximumLongitude = (int)Math.Floor(geography.Bounds.SouthEast.Longitude) + 180; // right
+
+            // add the geography element to every index region for which there is a GeoBox overlapped
+            for (var lat = vMinimumLatitude; lat <= vMaximumLatitude; ++lat)
+            {
+                for (var lon = vMinimumLongitude; lon <= vMaximumLongitude; ++lon)
+                {
+                    _index[lat, lon].Remove(geography);
+                }
+            }
         }
 
         public List<Geography> FindNearby(double latitude, double longitude)
@@ -91,21 +103,11 @@ namespace Sumo.Geo.GeoFences
 
         public List<Region> FindRegions(GeoPoint point)
         {
-            var nearbyRegions = FindNearby(point)
+            return FindNearby(point)
                 .Where((g) => g is Region)
-                .Select((g) => g as Region);
-
-            var result = new List<Region>(nearbyRegions.Count());
-
-            foreach (var region in nearbyRegions)
-            {
-                if (region.Contains(point))
-                {
-                    result.Add(region);
-                }
-            }
-
-            return result;
+                .Select((g) => g as Region)
+                .Where((r) => r.Contains(point))
+                .ToList();
         }
     }
 }
