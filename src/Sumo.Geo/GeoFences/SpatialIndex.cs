@@ -35,7 +35,11 @@ namespace Sumo.Geo.GeoFences
             {
                 for (var lon = vMinimumLongitude; lon <= vMaximumLongitude; ++lon)
                 {
-                    _index[lat, lon].Add(geography);
+                    var page = _index[lat, lon];
+                    if (!page.Contains(geography))
+                    {
+                        page.Add(geography);
+                    }                    
                 }
             }
         }
