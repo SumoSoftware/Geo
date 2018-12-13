@@ -25,22 +25,22 @@ namespace Sumo.Geo.Evaluators
                     point1.Longitude >= point2.Longitude ? point1.Longitude : point2.Longitude);
                 southEast.Longitude += Geography.GetDegreesLongitudePerNauticalMile(southEast.Longitude) * _halfWidthInNauticalMiles;
 
-                _bounds = new GeoBox(northWest, southEast);
+                _bounds = new Box(northWest, southEast);
 
                 // putting boxes around the end caps
-                _point1Box = new GeoBox(
+                _point1Box = new Box(
                     new GeoPoint(point1.Latitude + Geography.DegreesLatitudePerNauticalMile * _halfWidthInNauticalMiles, point1.Longitude - Geography.GetDegreesLongitudePerNauticalMile(point1.Longitude) * _halfWidthInNauticalMiles),
                     new GeoPoint(point1.Latitude - Geography.DegreesLatitudePerNauticalMile * _halfWidthInNauticalMiles, point1.Longitude + Geography.GetDegreesLongitudePerNauticalMile(point1.Longitude) * _halfWidthInNauticalMiles));
 
-                _point2Box = new GeoBox(
+                _point2Box = new Box(
                     new GeoPoint(point2.Latitude + Geography.DegreesLatitudePerNauticalMile * _halfWidthInNauticalMiles, point2.Longitude - Geography.GetDegreesLongitudePerNauticalMile(point2.Longitude) * _halfWidthInNauticalMiles),
                     new GeoPoint(point2.Latitude - Geography.DegreesLatitudePerNauticalMile * _halfWidthInNauticalMiles, point2.Longitude + Geography.GetDegreesLongitudePerNauticalMile(point2.Longitude) * _halfWidthInNauticalMiles));
             }
 
             private readonly double _halfWidthInNauticalMiles;
-            private readonly GeoBox _point1Box;
-            private readonly GeoBox _point2Box;
-            private readonly GeoBox _bounds;
+            private readonly Box _point1Box;
+            private readonly Box _point2Box;
+            private readonly Box _bounds;
 
             public bool Contains(GeoPoint point)
             {
