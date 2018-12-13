@@ -34,5 +34,25 @@ namespace Sumo.Geo.Metrics
         {
             return !(distance1 == distance2);
         }
+
+        public static bool operator <(Distance distance1, Distance distance2)
+        {
+            return distance1.Value < distance2.ConvertTo(distance1.Units).Value;
+        }
+
+        public static bool operator >(Distance distance1, Distance distance2)
+        {
+            return distance1.Value > distance2.ConvertTo(distance1.Units).Value;
+        }
+
+        public static bool operator <=(Distance distance1, Distance distance2)
+        {
+            return distance1.Value <= distance2.ConvertTo(distance1.Units).Value;
+        }
+
+        public static bool operator >=(Distance distance1, Distance distance2)
+        {
+            return distance1.Value >= distance2.ConvertTo(distance1.Units).Value;
+        }
     }
 }

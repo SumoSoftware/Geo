@@ -7,11 +7,11 @@ namespace Sumo.Geo.Metrics
     {
         public Displacement() { }
 
-        public Displacement(GeoPoint origin, Angle heading, Distance magnitude)
+        public Displacement(GeoPoint origin, Angle heading, Distance distance)
         {
             Origin = origin;
             Heading = heading;
-            Distance = magnitude;
+            Distance = distance;
         }
 
         public Angle Heading { get; set; }
