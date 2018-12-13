@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace Sumo.Geo.Geographies
 {
-    public class Polygon : Region
+    public partial class Polygon : Region, IEquatable<Polygon>
     {
         public Polygon() { }
 

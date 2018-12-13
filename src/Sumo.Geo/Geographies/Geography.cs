@@ -4,7 +4,7 @@ using System;
 
 namespace Sumo.Geo.Geographies
 {
-    public abstract class Geography
+    public abstract partial class Geography
     {
         private GeoBox _bounds;
         public GeoBox Bounds
