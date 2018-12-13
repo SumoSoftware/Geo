@@ -11,9 +11,9 @@ namespace Sumo.Geo.GeoFences
     {
         public List<Region> Regions { get; set; }
 
-        protected override GeoBox GetBounds()
+        protected override Box GetBounds()
         {
-            return new GeoBox(
+            return new Box(
                 new GeoPoint(Regions.Max(r => r.Bounds.NorthWest.Latitude), Regions.Min(r => r.Bounds.NorthWest.Longitude)),
                 new GeoPoint(Regions.Min(r => r.Bounds.SouthEast.Latitude), Regions.Max(r => r.Bounds.SouthEast.Longitude)));
         }
