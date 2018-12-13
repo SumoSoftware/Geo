@@ -5,6 +5,8 @@ using System.Linq;
 
 namespace Sumo.Geo.GeoFences
 {
+    //todo: add state managmer for geofences - maybe that's a new library - Sumo.Geo.Iot
+
     public partial class GeoFence : Region
     {
         public List<Region> Regions { get; set; }
