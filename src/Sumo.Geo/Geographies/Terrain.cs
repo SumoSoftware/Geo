@@ -3,7 +3,10 @@ using System.Linq;
 
 namespace Sumo.Geo.Geographies
 {
-    public class Surface : Geography
+    /// <summary>
+    /// a raster of equidistant geo points with elevations that define a terrain surface
+    /// </summary>
+    public class Terrain : Geography
     {
         public Path Elevations { get; set; }
 
