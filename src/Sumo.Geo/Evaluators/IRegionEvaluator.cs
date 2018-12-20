@@ -1,4 +1,4 @@
-﻿//using Sumo.Geo.Geographies;
+﻿//using Sumo.Geo.Features;
 //using Sumo.Geo.Geometries;
 
 //namespace Sumo.Geo.Evaluators

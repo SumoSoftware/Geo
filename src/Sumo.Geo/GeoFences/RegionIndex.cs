@@ -1,4 +1,4 @@
-﻿//using Sumo.Geo.Geographies;
+﻿//using Sumo.Geo.Features;
 //using Sumo.Geo.Metrics;
 //using Sumo.Geo.Geometries;
 //using System;
