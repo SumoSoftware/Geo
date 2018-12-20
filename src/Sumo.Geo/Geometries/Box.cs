@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Sumo.Geo.Metrics;
+using System;
 
 namespace Sumo.Geo.Geometries
 {
@@ -49,6 +50,13 @@ namespace Sumo.Geo.Geometries
                     Coordinates[3] = (new Point(SouthEast.Latitude, NorthWest.Longitude));
                 }
             }
+        }
+
+        public override Area GetArea()
+        {
+            var width = NorthWest.GetDistance(NorthWest.Latitude, SouthEast.Longitude);
+            var height = NorthWest.GetDistance(SouthEast.Latitude, NorthWest.Longitude);
+            return new Area(width.Value * height.Value, UnitsOfLength.NauticalMile);
         }
     }
 }

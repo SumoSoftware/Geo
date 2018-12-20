@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" GroupingSetting="Access" MembersFormat="NameAndType">
+  <Class Name="Sumo.Geo.Geometries.Circle" BaseTypeListCollapsed="true">
+    <Position X="7" Y="2.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>CAAIAAAAAAIAAAAAgAAAAAAAAAAAAIAAAAAAEAAIAiA=</HashCode>
+      <FileName>Geometries\Generated\Circle.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Sumo.Geo.Geometries.LineSegment" BaseTypeListCollapsed="true">
+    <Position X="4.25" Y="2.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAEhAAAAAAAIAAAAIAAAAAAAAAAAiA=</HashCode>
+      <FileName>Geometries\Generated\LineSegment.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Sumo.Geo.Geometries.Path">
+    <Position X="12.5" Y="2.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEgAAAAAAAIAAAAIAAAAAAAAAAAiA=</HashCode>
+      <FileName>Geometries\Generated\Path.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Sumo.Geo.Geometries.Point" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="2.25" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABAQEAgAAAEgMAIAAAAAEAAAIAAAAAAAAAAEiA=</HashCode>
+      <FileName>Geometries\Generated\Point.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Sumo.Geo.Geometries.PointCollection" BaseTypeListCollapsed="true">
+    <Position X="9.75" Y="2.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEgAAAAAAAIAAAAIAAAAAAAAAAAiA=</HashCode>
+      <FileName>Geometries\Generated\PointCollection.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Sumo.Geo.Geometries.Box">
+    <Position X="12.75" Y="7.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAACAAABAAAAAAAAAAAAAAAAAAAAAAgAAAAAEAAACAA=</HashCode>
+      <FileName>Geometries\Box.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Sumo.Geo.Geometries.Polygon">
+    <Position X="12.75" Y="5.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAA=</HashCode>
+      <FileName>Geometries\Polygon.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="Sumo.Geo.Geometries.IGeometry">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Geometries\IGeometry.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="Sumo.Geo.Geometries.CoordinateReferenceSystems">
+    <Position X="2.75" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Geometries\CoordinateReferenceSystems.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

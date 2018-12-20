@@ -27,7 +27,6 @@ namespace Sumo.Geo.Geometries
         {
         }
 
-
         private double _latitude;
         public double Latitude
         {
@@ -71,32 +70,6 @@ namespace Sumo.Geo.Geometries
         }
 
         public Distance Elevation { get; set; }
-
-        ///// <summary>
-        ///// bounds exists exclusively for indexing and it creates a weird behavior, but I don't see a better way at the moment
-        ///// </summary>
-        //private GeoBox _bounds;
-        //public GeoBox Bounds
-        //{
-        //    get
-        //    {
-        //        if (_bounds == null)
-        //        {
-        //            _bounds = GetBounds();
-        //        }
-        //        return _bounds;
-        //    }
-        //    set => _bounds = value;
-        //}
-
-        ///// <summary>
-        ///// calculates the bounding box of the geo entity
-        ///// </summary>
-        ///// <returns></returns>
-        //private GeoBox GetBounds()
-        //{
-        //    return new GeoBox(this, this);
-        //}
 
         private Distance GetDistance(double latitude1, double longitude1, double latitude2, double longitude2, UnitsOfLength units = UnitsOfLength.NauticalMile)
         {
@@ -166,7 +139,7 @@ namespace Sumo.Geo.Geometries
             return GetDistance(point.Latitude, point.Longitude, units);
         }
 
-        public Angle GetAngle(double latitude, double longitude)
+        public Angle GetHeading(double latitude, double longitude)
         {
             var xDelta = GetDistance(Latitude, Longitude, latitude, Longitude, UnitsOfLength.NauticalMile);
             var yDelta = GetDistance(Latitude, Longitude, Latitude, longitude, UnitsOfLength.NauticalMile);
@@ -181,12 +154,12 @@ namespace Sumo.Geo.Geometries
                 throw new ArgumentNullException(nameof(point));
             }
 
-            return GetAngle(point.Latitude, point.Longitude);
+            return GetHeading(point.Latitude, point.Longitude);
         }
 
         public Displacement GetDisplacement(double latitude, double longitude, UnitsOfLength units = UnitsOfLength.NauticalMile)
         {
-            return new Displacement(this, GetAngle(latitude, longitude), GetDistance(latitude, longitude, units));
+            return new Displacement(this, GetHeading(latitude, longitude), GetDistance(latitude, longitude, units));
         }
 
         public Displacement GetDisplacement(Point point, UnitsOfLength units = UnitsOfLength.NauticalMile)
@@ -206,7 +179,7 @@ namespace Sumo.Geo.Geometries
 
         public override string ToString()
         {
-            if (Elevation != null)
+            if (Elevation.Value > 0.0)
             {
                 return String.Format($"({Latitude.ToString("F5")}, {Longitude.ToString("F5")}, {Elevation.Value.ToString("F5")})");
             }

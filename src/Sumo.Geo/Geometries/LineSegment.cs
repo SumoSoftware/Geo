@@ -39,7 +39,7 @@ namespace Sumo.Geo.Geometries
         /// returns geodesic distance (great arc)
         /// </summary>
         /// <returns></returns>
-        public Distance GetGeoDesicLength(UnitsOfLength units = UnitsOfLength.NauticalMile)
+        public Distance GetLength(UnitsOfLength units = UnitsOfLength.NauticalMile)
         {
             return Coordinates[0].GetDistance(Coordinates[1], units);
         }

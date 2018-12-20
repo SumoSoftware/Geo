@@ -3,7 +3,7 @@ using System;
 
 namespace Sumo.Geo.Geometries
 {
-    public partial class Circle : IGeometry
+    public partial class Circle : IRegion
     {
         public Circle() { }
 
@@ -27,30 +27,19 @@ namespace Sumo.Geo.Geometries
             }
         }
 
-        //protected override Point GetCentroid()
-        //{
-        //    return Center;
-        //}
+        public Area GetArea()
+        {
+            // pi r^2
+            var area = Math.PI * Math.Pow(Radius.Value, 2);
+            return new Area(area, Radius.Units);
+        }
 
         //protected override void SetBounds()
         //{
         //    var degreesLatitude = Geography.DegreesLatitudePerNauticalMile * _radiusInNauticalMiles;
         //    var degressLongitude = Geography.GetDegreesLongitudePerNauticalMile(Center.Latitude) * _radiusInNauticalMiles;
-
         //    NorthWest = new Point(Center.Latitude + degreesLatitude, Center.Longitude - degressLongitude);
         //    SouthEast = new Point(Center.Latitude - degreesLatitude, Center.Longitude + degressLongitude);
-        //}
-
-        //protected override bool PrecisionContains(Point point)
-        //{
-        //    throw new System.NotImplementedException();
-        //}
-
-        //public override Area GetArea()
-        //{
-        //    // pi r^2
-        //    var area = Math.PI * Math.Pow(Radius.Value, 2);
-        //    return new Area(area, Radius.Units);
         //}
     }
 }
