@@ -1,4 +1,4 @@
-﻿using Sumo.Geo.Primitives;
+﻿using Sumo.Geo.Geometries;
 using System;
 using System.Collections.Generic;
 
@@ -16,7 +16,7 @@ namespace Sumo.Geo.Metrics
             return other != null &&
                    EqualityComparer<Angle>.Default.Equals(Heading, other.Heading) &&
                    EqualityComparer<Distance>.Default.Equals(Distance, other.Distance) &&
-                   EqualityComparer<GeoPoint>.Default.Equals(Origin, other.Origin);
+                   EqualityComparer<Point>.Default.Equals(Origin, other.Origin);
         }
 
         public override int GetHashCode()
@@ -24,7 +24,7 @@ namespace Sumo.Geo.Metrics
             var hashCode = -594542511;
             hashCode = hashCode * -1521134295 + EqualityComparer<Angle>.Default.GetHashCode(Heading);
             hashCode = hashCode * -1521134295 + EqualityComparer<Distance>.Default.GetHashCode(Distance);
-            hashCode = hashCode * -1521134295 + EqualityComparer<GeoPoint>.Default.GetHashCode(Origin);
+            hashCode = hashCode * -1521134295 + EqualityComparer<Point>.Default.GetHashCode(Origin);
             return hashCode;
         }
 
