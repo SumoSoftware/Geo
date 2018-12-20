@@ -1,9 +1,9 @@
-﻿using Sumo.Geo.Geographies;
+﻿//using Sumo.Geo.Geographies;
 
-namespace Sumo.Geo.Evaluators
-{
-    public interface IEvaluatorFactory
-    {
-        IRegionEvaluator Create(Region region);
-    }
-}
+//namespace Sumo.Geo.Evaluators
+//{
+//    public interface IEvaluatorFactory
+//    {
+//        IRegionEvaluator Create(Region region);
+//    }
+//}
