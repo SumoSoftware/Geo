@@ -26,5 +26,11 @@ namespace Sumo.Geo.Geometries
         {
             return $"[{String.Join(",", Coordinates)}]";
         }
+
+        //protected override void SetBounds()
+        //{
+        //    NorthWest = new Point(Points.Max(p => p.Latitude), Points.Min(p => p.Longitude));
+        //    SouthEast = new Point(Points.Min(p => p.Latitude), Points.Max(p => p.Longitude));
+        //}
     }
 }

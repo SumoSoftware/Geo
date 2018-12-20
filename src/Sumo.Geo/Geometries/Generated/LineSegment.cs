@@ -1,11 +1,10 @@
-﻿using Sumo.Geo.Primitives;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Sumo.Geo.Geographies
+namespace Sumo.Geo.Geometries
 {
-    public partial class LineSegment : Region, IEquatable<LineSegment>
+    public partial class LineSegment : IEquatable<LineSegment>
     {
         public override bool Equals(object obj)
         {
@@ -15,12 +14,12 @@ namespace Sumo.Geo.Geographies
         public bool Equals(LineSegment other)
         {
             return other != null &&
-                   Points.SequenceEqual(other.Points);
+                   Coordinates.SequenceEqual(other.Coordinates);
         }
 
         public override int GetHashCode()
         {
-            return 480822998 + EqualityComparer<GeoPoint[]>.Default.GetHashCode(Points);
+            return 480822998 + EqualityComparer<Point[]>.Default.GetHashCode(Coordinates);
         }
 
         public static bool operator ==(LineSegment segment1, LineSegment segment2)
