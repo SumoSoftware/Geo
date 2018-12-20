@@ -6,39 +6,7 @@
 //{
 //    public abstract class Region : Geography, IRegion
 //    {
-//        #region bounds
-//        private Point _northWest;
-//        public Point NorthWest
-//        {
-//            get
-//            {
-//                if (_northWest == null)
-//                {
-//                    SetBounds();
-//                }
 
-//                return _northWest;
-//            }
-//            protected set => _northWest = value;
-//        }
-
-//        private Point _southEast;
-//        public Point SouthEast
-//        {
-//            get
-//            {
-//                if (_southEast == null)
-//                {
-//                    SetBounds();
-//                }
-
-//                return _southEast;
-//            }
-//            protected set => _southEast = value;
-//        }
-
-//        protected virtual void SetBounds() { }
-//        #endregion
 
 //        #region centroid
 //        private Point _centroid;
