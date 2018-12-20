@@ -3,8 +3,18 @@ using System.Collections.Generic;
 
 namespace Sumo.Geo.Metrics
 {
-    public partial class Area : IEquatable<Area>
+    public partial class Area : IEquatable<Area>, IComparable<Area>, IComparable
     {
+        public int CompareTo(Area other)
+        {
+            return Value.CompareTo(other.ConvertTo(Units).Value);
+        }
+
+        public int CompareTo(object obj)
+        {
+            return CompareTo(obj as Area);
+        }
+
         public override bool Equals(object obj)
         {
             return Equals(obj as Area);

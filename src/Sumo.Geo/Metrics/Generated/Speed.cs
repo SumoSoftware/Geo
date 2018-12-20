@@ -3,8 +3,18 @@ using System.Collections.Generic;
 
 namespace Sumo.Geo.Metrics
 {
-    public partial class Speed : IEquatable<Speed>
+    public partial class Speed : IEquatable<Speed>, IComparable<Speed>, IComparable
     {
+        public int CompareTo(Speed other)
+        {
+            return Distance.CompareTo(other.ConvertTo(Units).Distance);
+        }
+
+        public int CompareTo(object obj)
+        {
+            return CompareTo(obj as Speed);
+        }
+
         public override bool Equals(object obj)
         {
             return Equals(obj as Speed);
@@ -13,14 +23,14 @@ namespace Sumo.Geo.Metrics
         public bool Equals(Speed other)
         {
             return other != null &&
-                   EqualityComparer<Speed>.Default.Equals(Speed, other.Speed) &&
+                   EqualityComparer<Distance>.Default.Equals(Distance, other.Distance) &&
                    Units == other.Units;
         }
 
         public override int GetHashCode()
         {
             var hashCode = 1591325966;
-            hashCode = hashCode * -1521134295 + EqualityComparer<Speed>.Default.GetHashCode(Speed);
+            hashCode = hashCode * -1521134295 + EqualityComparer<Distance>.Default.GetHashCode(Distance);
             hashCode = hashCode * -1521134295 + Units.GetHashCode();
             return hashCode;
         }

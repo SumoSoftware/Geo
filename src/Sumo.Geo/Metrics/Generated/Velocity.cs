@@ -3,8 +3,13 @@ using System.Collections.Generic;
 
 namespace Sumo.Geo.Metrics
 {
-    public partial class Velocity : Speed, IEquatable<Velocity>
+    public partial class Velocity : Speed, IEquatable<Velocity>, IComparable<Velocity>, IComparable
     {
+        public int CompareTo(Velocity other)
+        {
+            return base.CompareTo(other);
+        }
+
         public override bool Equals(object obj)
         {
             return Equals(obj as Velocity);

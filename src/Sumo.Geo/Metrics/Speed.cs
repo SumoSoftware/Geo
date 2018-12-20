@@ -26,6 +26,11 @@ namespace Sumo.Geo.Metrics
 
         public Speed ConvertTo(UnitsOfTime units)
         {
+            if (Units == units)
+            {
+                return this;
+            }
+
             // 1. convert current time unit to seconds
             var seconds = 1.0;
             switch (Units)
