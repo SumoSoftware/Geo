@@ -14,3 +14,9 @@ todo: add antimeridian and pole support to geobounds/geobox class
 
 GeoJSON spec is useful for modeling guidence
 https://tools.ietf.org/html/rfc7946
+
+GIS dedicated wiki and glossary
+http://wiki.gis.com/wiki/index.php/GIS_Glossary
+
+Another GIS glossary
+https://gisgeography.com/gis-dictionary-definition-glossary/
