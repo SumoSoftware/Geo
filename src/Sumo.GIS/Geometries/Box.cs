@@ -8,8 +8,8 @@ namespace Sumo.GIS.Geometries
         public Box()
             : base(new Point[] { new Point(), new Point(), new Point(), new Point() })
         {
-            _northWest = Coordinates[0];
-            _southEast = Coordinates[2];
+            _northWest = this[0];
+            _southEast = this[2];
         }
 
         public Box(Point northWest, Point southEast)
