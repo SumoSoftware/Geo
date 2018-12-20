@@ -20,3 +20,8 @@ http://wiki.gis.com/wiki/index.php/GIS_Glossary
 
 Another GIS glossary
 https://gisgeography.com/gis-dictionary-definition-glossary/
+
+go readup on GDAL
+GDAL: [GIS software] Geospatial Data Abstraction Library (GDAL) is a C++ library for reading and writing raster geospatial data formats, implementing common GIS operations (unions, intersections, joins, clipping, etc.) with command line utilities. It supports old hardware and operating systems and requires very low amounts of memory. 
+
+GRASS GIS: [software] GRASS GIS (Geographic Resource Analysis Support System) was developed by the US Army Corps of Engineers and is a free and open source GIS software. GRASS GIS is highly used in academic institutions with over 400 modules for GIS analysis. 
