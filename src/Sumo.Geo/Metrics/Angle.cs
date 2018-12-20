@@ -2,7 +2,7 @@
 
 namespace Sumo.Geo.Metrics
 {
-    public partial class Angle
+    public partial class Angle : IMetric
     {
         public Angle() { }
 
@@ -12,7 +12,7 @@ namespace Sumo.Geo.Metrics
             Units = units;
         }
 
-        public Angle(double value): this(value, UnitsOfAngle.Degree)
+        public Angle(double value) : this(value, UnitsOfAngle.Degree)
         {
         }
 
@@ -20,8 +20,8 @@ namespace Sumo.Geo.Metrics
         {
         }
 
-        public double Value { get; set; }
-        public UnitsOfAngle Units { get; set; }
+        public double Value { get; }
+        public UnitsOfAngle Units { get; }
 
         public override string ToString()
         {

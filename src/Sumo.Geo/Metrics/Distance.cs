@@ -2,7 +2,7 @@
 
 namespace Sumo.Geo.Metrics
 {
-    public partial class Distance
+    public partial class Distance : IMetric
     {
         public Distance() { }
 
@@ -16,8 +16,8 @@ namespace Sumo.Geo.Metrics
         {
         }
 
-        public double Value { get; set; }
-        public UnitsOfLength Units { get; set; }
+        public double Value { get; }
+        public UnitsOfLength Units { get; }
 
         public override string ToString()
         {

@@ -6,7 +6,7 @@ namespace Sumo.Geo.Metrics
     /// <summary>
     /// Displacement is a vector that describes the relationship between two points.
     /// </summary>
-    public partial class Displacement
+    public partial class Displacement : IMetric
     {
         public Displacement() { }
 
@@ -17,9 +17,9 @@ namespace Sumo.Geo.Metrics
             Distance = distance;
         }
 
-        public Angle Heading { get; set; }
-        public Distance Distance { get; set; }
-        public Point Origin { get; set; }
+        public Angle Heading { get; }
+        public Distance Distance { get; }
+        public Point Origin { get; }
 
         public override string ToString()
         {

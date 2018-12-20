@@ -2,7 +2,7 @@
 
 namespace Sumo.Geo.Metrics
 {
-    public partial class Speed
+    public partial class Speed : IMetric
     {
         public Speed() { }
 
@@ -21,8 +21,8 @@ namespace Sumo.Geo.Metrics
         {
         }
 
-        public Distance Distance { get; set; }
-        public UnitsOfTime Units { get; set; }
+        public Distance Distance { get; }
+        public UnitsOfTime Units { get; }
 
         public Speed ConvertTo(UnitsOfTime units)
         {
