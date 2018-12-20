@@ -12,6 +12,10 @@ namespace Sumo.Geo.Metrics
             Units = units;
         }
 
+        public Angle(double value): this(value, UnitsOfAngle.Degree)
+        {
+        }
+
         public Angle(Angle angle) : this(angle.Value, angle.Units)
         {
         }
