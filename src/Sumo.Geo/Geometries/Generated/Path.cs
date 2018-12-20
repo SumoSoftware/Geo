@@ -19,7 +19,7 @@ namespace Sumo.Geo.Geometries
 
         public override int GetHashCode()
         {
-            return -1484672504 + EqualityComparer<List<OrderedPoint>>.Default.GetHashCode(Coordinates);
+            return -1484672504 + EqualityComparer<List<Point>>.Default.GetHashCode(Coordinates);
         }
 
         public static bool operator ==(Path polygon1, Path polygon2)

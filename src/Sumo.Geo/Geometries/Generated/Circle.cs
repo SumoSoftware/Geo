@@ -1,11 +1,10 @@
 ﻿using Sumo.Geo.Metrics;
-using Sumo.Geo.Primitives;
 using System;
 using System.Collections.Generic;
 
-namespace Sumo.Geo.Geographies
+namespace Sumo.Geo.Geometries
 {
-    public partial class Circle : Region, IEquatable<Circle>
+    public partial class Circle : IEquatable<Circle>
     {
         public override bool Equals(object obj)
         {
@@ -17,9 +16,8 @@ namespace Sumo.Geo.Geographies
             return other != null &&
                    base.Equals(other) &&
                    _radiusInNauticalMiles == other._radiusInNauticalMiles &&
-                   EqualityComparer<GeoPoint>.Default.Equals(Center, other.Center) &&
-                   EqualityComparer<Distance>.Default.Equals(_radius, other._radius) &&
-                   EqualityComparer<Distance>.Default.Equals(Radius, other.Radius);
+                   EqualityComparer<Point>.Default.Equals(Center, other.Center) &&
+                   EqualityComparer<Distance>.Default.Equals(_radius, other.Radius);
         }
 
         public override int GetHashCode()
@@ -27,8 +25,7 @@ namespace Sumo.Geo.Geographies
             var hashCode = 1130478661;
             hashCode = hashCode * -1521134295 + base.GetHashCode();
             hashCode = hashCode * -1521134295 + _radiusInNauticalMiles.GetHashCode();
-            hashCode = hashCode * -1521134295 + EqualityComparer<GeoPoint>.Default.GetHashCode(Center);
-            hashCode = hashCode * -1521134295 + EqualityComparer<Distance>.Default.GetHashCode(_radius);
+            hashCode = hashCode * -1521134295 + EqualityComparer<Point>.Default.GetHashCode(Center);
             hashCode = hashCode * -1521134295 + EqualityComparer<Distance>.Default.GetHashCode(Radius);
             return hashCode;
         }

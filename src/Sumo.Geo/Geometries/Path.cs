@@ -8,10 +8,10 @@ namespace Sumo.Geo.Geometries
     {
         public Path()
         {
-            Coordinates = new List<OrderedPoint>();
+            Coordinates = new List<Point>();
         }
 
-        public Path(IEnumerable<OrderedPoint> points)
+        public Path(IEnumerable<Point> points)
         {
             if (points == null)
             {
@@ -23,10 +23,10 @@ namespace Sumo.Geo.Geometries
                 throw new ArgumentOutOfRangeException(nameof(points));
             }
 
-            Coordinates = new List<OrderedPoint>(points.OrderBy((p) => p.Order));
+            Coordinates = new List<Point>(points);
         }
 
-        public List<OrderedPoint> Coordinates { get; }
+        public List<Point> Coordinates { get; }
 
         public override string ToString()
         {
