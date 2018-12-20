@@ -5,7 +5,7 @@ namespace Sumo.GIS.Geometries
 {
     public partial class LineSegment : IGeometry
     {
-        public LineSegment() : this (new Point(), new Point())
+        public LineSegment() : this(new Point(), new Point())
         {
         }
 
@@ -36,6 +36,18 @@ namespace Sumo.GIS.Geometries
         public Point this[int i]
         {
             get => _coordinates[i];
+        }
+
+        public Point Origin
+        {
+            get => _coordinates[0];
+            set => _coordinates[0] = value;
+        }
+
+        public Point Terminus
+        {
+            get => _coordinates[1];
+            set => _coordinates[1] = value;
         }
 
         /// <summary>
