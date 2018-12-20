@@ -1,8 +1,6 @@
 ﻿using Sumo.Geo.Metrics;
 using System;
 
-//todo: all primitives should be serializable for storage in mongo, docdb, json or xml files
-
 namespace Sumo.Geo.Geometries
 {
     public partial class Point : IGeometry
@@ -24,7 +22,6 @@ namespace Sumo.Geo.Geometries
             Longitude = longitude;
             Elevation = new Distance(elevation);
         }
-
 
         public Point(Point point) : this(point.Latitude, point.Longitude, point.Elevation)
         {
@@ -72,6 +69,7 @@ namespace Sumo.Geo.Geometries
                 }
             }
         }
+
         public Distance Elevation { get; set; }
 
         ///// <summary>
@@ -214,6 +212,5 @@ namespace Sumo.Geo.Geometries
             }
             return String.Format($"({Latitude.ToString("F5")}, {Longitude.ToString("F5")})");
         }
-
     }
 }
