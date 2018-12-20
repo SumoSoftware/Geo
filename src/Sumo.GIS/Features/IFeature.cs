@@ -7,5 +7,6 @@ namespace Sumo.GIS.Features
     {
         GeometryCollection Geometries { get; }
         Dictionary<string, object> Properties { get; }
+        Box Bounds { get; }
     }
 }
