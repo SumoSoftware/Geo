@@ -1,0 +1,46 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.136
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sumo.GIS", "src\Sumo.GIS\Sumo.GIS.csproj", "{13295A14-20AD-414A-B611-8A0D99A9F266}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{A3A98C42-6593-45EB-937F-412796EA8B3F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{3918E9A8-6B13-49CA-9D91-0C549247F398}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{BD12AD67-B58D-4358-A08A-1695FE93D5A2}"
+	ProjectSection(SolutionItems) = preProject
+		LICENSE = LICENSE
+		notes.md = notes.md
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sumo.GIS.Test", "test\Sumo.GIS.Test\Sumo.GIS.Test.csproj", "{208A2966-285B-4CC2-BB69-29C5902EED25}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{13295A14-20AD-414A-B611-8A0D99A9F266}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13295A14-20AD-414A-B611-8A0D99A9F266}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13295A14-20AD-414A-B611-8A0D99A9F266}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13295A14-20AD-414A-B611-8A0D99A9F266}.Release|Any CPU.Build.0 = Release|Any CPU
+		{208A2966-285B-4CC2-BB69-29C5902EED25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{208A2966-285B-4CC2-BB69-29C5902EED25}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{208A2966-285B-4CC2-BB69-29C5902EED25}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{208A2966-285B-4CC2-BB69-29C5902EED25}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{13295A14-20AD-414A-B611-8A0D99A9F266} = {A3A98C42-6593-45EB-937F-412796EA8B3F}
+		{208A2966-285B-4CC2-BB69-29C5902EED25} = {3918E9A8-6B13-49CA-9D91-0C549247F398}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3799ECAF-F742-4EB2-BC5B-1F72AE8E4A7C}
+	EndGlobalSection
+EndGlobal
