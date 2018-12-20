@@ -19,14 +19,14 @@ namespace Sumo.GIS.Metrics
         {
             return other != null &&
                    base.Equals(other) &&
-                   EqualityComparer<Angle>.Default.Equals(Heading, other.Heading);
+                   EqualityComparer<Angle>.Default.Equals(Azimuth, other.Azimuth);
         }
 
         public override int GetHashCode()
         {
             var hashCode = 560059979;
             hashCode = hashCode * -1521134295 + base.GetHashCode();
-            hashCode = hashCode * -1521134295 + EqualityComparer<Angle>.Default.GetHashCode(Heading);
+            hashCode = hashCode * -1521134295 + EqualityComparer<Angle>.Default.GetHashCode(Azimuth);
             return hashCode;
         }
 

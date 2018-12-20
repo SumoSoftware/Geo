@@ -14,7 +14,7 @@ namespace Sumo.GIS.Metrics
         public bool Equals(Displacement other)
         {
             return other != null &&
-                   EqualityComparer<Angle>.Default.Equals(Heading, other.Heading) &&
+                   EqualityComparer<Angle>.Default.Equals(Azimuth, other.Azimuth) &&
                    EqualityComparer<Distance>.Default.Equals(Distance, other.Distance) &&
                    EqualityComparer<Point>.Default.Equals(Origin, other.Origin);
         }
@@ -22,7 +22,7 @@ namespace Sumo.GIS.Metrics
         public override int GetHashCode()
         {
             var hashCode = -594542511;
-            hashCode = hashCode * -1521134295 + EqualityComparer<Angle>.Default.GetHashCode(Heading);
+            hashCode = hashCode * -1521134295 + EqualityComparer<Angle>.Default.GetHashCode(Azimuth);
             hashCode = hashCode * -1521134295 + EqualityComparer<Distance>.Default.GetHashCode(Distance);
             hashCode = hashCode * -1521134295 + EqualityComparer<Point>.Default.GetHashCode(Origin);
             return hashCode;

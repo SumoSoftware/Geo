@@ -8,25 +8,25 @@ namespace Sumo.GIS.Metrics
         {
         }
 
-        public Velocity(Distance distance, UnitsOfTime units, Angle heading) : base(distance, units)
+        public Velocity(Distance distance, UnitsOfTime units, Angle azimuth) : base(distance, units)
         {
-            if (heading == null)
+            if (azimuth == null)
             {
-                throw new ArgumentNullException(nameof(heading));
+                throw new ArgumentNullException(nameof(azimuth));
             }
 
-            Heading = new Angle(heading);
+            Azimuth = new Angle(azimuth);
         }
 
-        public Velocity(Velocity velocity) : this(velocity.Distance, velocity.Units, velocity.Heading)
+        public Velocity(Velocity velocity) : this(velocity.Distance, velocity.Units, velocity.Azimuth)
         {
         }
 
-        public Angle Heading { get; set; }
+        public Angle Azimuth { get; set; }
 
         public override string ToString()
         {
-            return $"{base.ToString()} to {Heading}";
+            return $"{base.ToString()} to {Azimuth}";
         }
     }
 }
