@@ -23,6 +23,66 @@ namespace Sumo.Geo.Metrics
         public double Value { get; }
         public UnitsOfAngle Units { get; }
 
+        public Angle ConvertTo(UnitsOfAngle units)
+        {
+            if (Units == units)
+                return this;
+
+            switch (Units)
+            {
+                case UnitsOfAngle.Degree:
+                    switch (units)
+                    {
+                        case UnitsOfAngle.Radian:
+                            return new Angle(Value.ToRadians(), units);
+                        case UnitsOfAngle.BinaryDegree:
+                        case UnitsOfAngle.ClockPosition:
+                        case UnitsOfAngle.CompassPoint:
+                        case UnitsOfAngle.Degree:
+                        case UnitsOfAngle.Gradian:
+                        case UnitsOfAngle.Milliradian:
+                        case UnitsOfAngle.MinuteOfArc:
+                        case UnitsOfAngle.Quadrant:
+                        case UnitsOfAngle.SecondOfArc:
+                        case UnitsOfAngle.Sextant:
+                        case UnitsOfAngle.Turn:
+                        default:
+                            throw new NotSupportedException($"{nameof(units)}: {units}");
+                    }
+                case UnitsOfAngle.Radian:
+                    switch (units)
+                    {
+                        case UnitsOfAngle.Degree:
+                            return new Angle(Value.ToDegrees(), units);
+                        case UnitsOfAngle.Radian:
+                        case UnitsOfAngle.BinaryDegree:
+                        case UnitsOfAngle.ClockPosition:
+                        case UnitsOfAngle.CompassPoint:
+                        case UnitsOfAngle.Gradian:
+                        case UnitsOfAngle.Milliradian:
+                        case UnitsOfAngle.MinuteOfArc:
+                        case UnitsOfAngle.Quadrant:
+                        case UnitsOfAngle.SecondOfArc:
+                        case UnitsOfAngle.Sextant:
+                        case UnitsOfAngle.Turn:
+                        default:
+                            throw new NotSupportedException($"{nameof(units)}: {units}");
+                    }
+                case UnitsOfAngle.BinaryDegree:
+                case UnitsOfAngle.ClockPosition:
+                case UnitsOfAngle.CompassPoint:
+                case UnitsOfAngle.Gradian:
+                case UnitsOfAngle.Milliradian:
+                case UnitsOfAngle.MinuteOfArc:
+                case UnitsOfAngle.Quadrant:
+                case UnitsOfAngle.SecondOfArc:
+                case UnitsOfAngle.Sextant:
+                case UnitsOfAngle.Turn:
+                default:
+                    throw new NotSupportedException($"{nameof(units)}: {units}");
+            }
+        }
+
         public override string ToString()
         {
             var units = Units.ToString();

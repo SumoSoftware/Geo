@@ -3,8 +3,18 @@ using System.Collections.Generic;
 
 namespace Sumo.Geo.Metrics
 {
-    public partial class Angle : IEquatable<Angle>
+    public partial class Angle : IEquatable<Angle>, IComparable<Angle>, IComparable
     {
+        public int CompareTo(object obj)
+        {
+            return CompareTo(obj as Angle);
+        }
+
+        public int CompareTo(Angle other)
+        {
+            return Value.CompareTo(other.ConvertTo(Units).Value);
+        }
+
         public override bool Equals(object obj)
         {
             return Equals(obj as Angle);
