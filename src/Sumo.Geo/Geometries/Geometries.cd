@@ -11,16 +11,16 @@
   <Class Name="Sumo.Geo.Geometries.LineSegment" BaseTypeListCollapsed="true">
     <Position X="4.25" Y="2.25" Width="2.25" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAgAAAEhAAAAAAAIAAAAIAAAAAAAAAAAiA=</HashCode>
+      <HashCode>AAAAAAAAAAAoAAAEjAAAAAAAAAAAAIAAAAAAAAAAAiA=</HashCode>
       <FileName>Geometries\Generated\LineSegment.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="Sumo.Geo.Geometries.Path">
-    <Position X="12.5" Y="2.25" Width="2.25" />
+    <Position X="9.75" Y="5.25" Width="2.25" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAEgAAAAAAAIAAAAIAAAAAAAAAAAiA=</HashCode>
-      <FileName>Geometries\Generated\Path.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Geometries\Path.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
@@ -35,20 +35,20 @@
   <Class Name="Sumo.Geo.Geometries.PointCollection" BaseTypeListCollapsed="true">
     <Position X="9.75" Y="2.25" Width="2.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAEgAAAAAAAIAAAAIAAAAAAAAAAAiA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAEgAAAAAAAAAAAAIAAAAAAAAAAAiA=</HashCode>
       <FileName>Geometries\Generated\PointCollection.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="Sumo.Geo.Geometries.Box">
-    <Position X="12.75" Y="7.25" Width="1.75" />
+    <Position X="9.75" Y="9.25" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAACAAABAAAAAAAAAAAAAAAAAAAAAAgAAAAAEAAACAA=</HashCode>
       <FileName>Geometries\Box.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Sumo.Geo.Geometries.Polygon">
-    <Position X="12.75" Y="5.25" Width="2" />
+    <Position X="9.75" Y="7.25" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAA=</HashCode>
       <FileName>Geometries\Polygon.cs</FileName>

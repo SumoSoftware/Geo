@@ -28,10 +28,10 @@ namespace Sumo.Geo.Geometries
                 if (_northWest != value)
                 {
                     _northWest = value;
-                    Coordinates[0] = _northWest; // first item
-                    Coordinates[4] = _northWest; // last item that closes the polygon
-                    Coordinates[1] = (new Point(NorthWest.Latitude, SouthEast.Longitude));
-                    Coordinates[3] = (new Point(SouthEast.Latitude, NorthWest.Longitude));
+                    this[0] = _northWest; // first item
+                    this[4] = _northWest; // last item that closes the polygon
+                    this[1] = (new Point(NorthWest.Latitude, SouthEast.Longitude));
+                    this[3] = (new Point(SouthEast.Latitude, NorthWest.Longitude));
                 }
             }
         }
@@ -45,9 +45,9 @@ namespace Sumo.Geo.Geometries
                 if (_southEast != value)
                 {
                     _southEast = value;
-                    Coordinates[2] = _southEast;
-                    Coordinates[1] = (new Point(NorthWest.Latitude, SouthEast.Longitude));
-                    Coordinates[3] = (new Point(SouthEast.Latitude, NorthWest.Longitude));
+                    this[2] = _southEast;
+                    this[1] = (new Point(NorthWest.Latitude, SouthEast.Longitude));
+                    this[3] = (new Point(SouthEast.Latitude, NorthWest.Longitude));
                 }
             }
         }

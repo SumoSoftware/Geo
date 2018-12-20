@@ -1,6 +1,7 @@
 ﻿using Sumo.Geo.Metrics;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Sumo.Geo.Geometries
 {
@@ -13,9 +14,14 @@ namespace Sumo.Geo.Geometries
 
         public Polygon(IEnumerable<Point> points) : base(points)
         {
-            if (Coordinates[0] != Coordinates[Coordinates.Count - 1])
+            if (points.Count() < 3)
             {
-                Coordinates.Add(new Point(Coordinates[0]));
+                throw new ArgumentOutOfRangeException(nameof(points));
+            }
+
+            if (this[0] != this[Count - 1])
+            {
+                Add(new Point(this[0]));
             }
         }
 

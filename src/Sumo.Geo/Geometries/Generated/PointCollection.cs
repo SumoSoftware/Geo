@@ -14,14 +14,12 @@ namespace Sumo.Geo.Geometries
         public bool Equals(PointCollection other)
         {
             return other != null &&
-                   Coordinates.SequenceEqual(other.Coordinates);
+                   this.SequenceEqual(other);
         }
 
         public override int GetHashCode()
         {
-            var hashCode = 87000715;
-            hashCode = hashCode * -1521134295 + EqualityComparer<List<Point>>.Default.GetHashCode(Coordinates);
-            return hashCode;
+            return base.GetHashCode();
         }
 
         public static bool operator ==(PointCollection path1, PointCollection path2)

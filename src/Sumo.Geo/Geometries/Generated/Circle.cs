@@ -17,7 +17,7 @@ namespace Sumo.Geo.Geometries
                    base.Equals(other) &&
                    _radiusInNauticalMiles == other._radiusInNauticalMiles &&
                    EqualityComparer<Point>.Default.Equals(Center, other.Center) &&
-                   EqualityComparer<Distance>.Default.Equals(_radius, other.Radius);
+                   EqualityComparer<Distance>.Default.Equals(Radius, other.Radius);
         }
 
         public override int GetHashCode()

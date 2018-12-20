@@ -14,12 +14,12 @@ namespace Sumo.Geo.Geometries
         public bool Equals(LineSegment other)
         {
             return other != null &&
-                   Coordinates.SequenceEqual(other.Coordinates);
+                   _coordinates.SequenceEqual(other._coordinates);
         }
 
         public override int GetHashCode()
         {
-            return 480822998 + EqualityComparer<Point[]>.Default.GetHashCode(Coordinates);
+            return 480822998 + EqualityComparer<Point[]>.Default.GetHashCode(_coordinates);
         }
 
         public static bool operator ==(LineSegment segment1, LineSegment segment2)

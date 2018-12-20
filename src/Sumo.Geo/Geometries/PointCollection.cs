@@ -3,11 +3,10 @@ using System.Collections.Generic;
 
 namespace Sumo.Geo.Geometries
 {
-    public partial class PointCollection : IGeometry
+    public partial class PointCollection : List<Point>, IGeometry
     {
         public PointCollection()
         {
-            Coordinates = new List<Point>();
         }
 
         public PointCollection(IEnumerable<Point> points)
@@ -17,14 +16,12 @@ namespace Sumo.Geo.Geometries
                 throw new ArgumentNullException(nameof(points));
             }
 
-            Coordinates = new List<Point>(points);
+            AddRange(points);
         }
-
-        public List<Point> Coordinates { get; }
 
         public override string ToString()
         {
-            return $"[{String.Join(",", Coordinates)}]";
+            return $"[{String.Join(",", this)}]";
         }
     }
 }

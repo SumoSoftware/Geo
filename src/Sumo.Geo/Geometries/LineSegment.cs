@@ -5,9 +5,8 @@ namespace Sumo.Geo.Geometries
 {
     public partial class LineSegment : IGeometry
     {
-        public LineSegment()
+        public LineSegment() : this (new Point(), new Point())
         {
-            Coordinates = new Point[2];
         }
 
         public LineSegment(Point point1, Point point2)
@@ -22,18 +21,22 @@ namespace Sumo.Geo.Geometries
                 throw new ArgumentNullException(nameof(point2));
             }
 
-            Coordinates = new Point[] { point1, point2 };
+            _coordinates = new Point[] { point1, point2 };
         }
 
         public LineSegment(double lat1, double lon1, double lat2, double lon2) : this(new Point(lat1, lon1), new Point(lat2, lon2))
         {
         }
 
-        public LineSegment(LineSegment lineSegment) : this(lineSegment?.Coordinates[0], lineSegment?.Coordinates[1])
+        public LineSegment(LineSegment lineSegment) : this(lineSegment?._coordinates[0], lineSegment?._coordinates[1])
         {
         }
 
-        public Point[] Coordinates { get; }
+        private Point[] _coordinates;
+        public Point this[int i]
+        {
+            get => _coordinates[i];
+        }
 
         /// <summary>
         /// returns geodesic distance (great arc)
@@ -41,17 +44,17 @@ namespace Sumo.Geo.Geometries
         /// <returns></returns>
         public Distance GetLength(UnitsOfLength units = UnitsOfLength.NauticalMile)
         {
-            return Coordinates[0].GetDistance(Coordinates[1], units);
+            return _coordinates[0].GetDistance(_coordinates[1], units);
         }
 
         public Angle GetHeading()
         {
-            return Coordinates[0].GetHeading(Coordinates[1]);
+            return _coordinates[0].GetHeading(_coordinates[1]);
         }
 
         public override string ToString()
         {
-            return String.Format($"[{Coordinates[0]}, {Coordinates[1]}]");
+            return String.Format($"[{_coordinates[0]}, {_coordinates[1]}]");
         }
 
         //protected override void SetBounds()
