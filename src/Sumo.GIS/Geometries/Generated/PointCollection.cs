@@ -22,14 +22,14 @@ namespace Sumo.GIS.Geometries
             return base.GetHashCode();
         }
 
-        public static bool operator ==(PointCollection path1, PointCollection path2)
+        public static bool operator ==(PointCollection collection1, PointCollection collection2)
         {
-            return EqualityComparer<PointCollection>.Default.Equals(path1, path2);
+            return EqualityComparer<PointCollection>.Default.Equals(collection1, collection2);
         }
 
-        public static bool operator !=(PointCollection path1, PointCollection path2)
+        public static bool operator !=(PointCollection collection1, PointCollection collection2)
         {
-            return !(path1 == path2);
+            return !(collection1 == collection2);
         }
     }
 }
