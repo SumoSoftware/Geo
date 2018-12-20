@@ -1,6 +1,6 @@
 ﻿namespace Sumo.Geo.Metrics
 {
-    public static class ConversionExtensions
+    public static class UnitsOfLengthExtensions
     {
         public static double ToNauticalMile(this double value, UnitsOfLength unit)
         {
