@@ -1,7 +1,7 @@
 ﻿//using Sumo.GIS.Features;
 //using Sumo.GIS.Geometries;
 
-//namespace Sumo.GIS.Evaluators
+//namespace Sumo.GIS.SpatialFunctions
 //{
 //    public interface IRegionEvaluator
 //    {

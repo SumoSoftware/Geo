@@ -4,7 +4,7 @@
 //using System.Collections.Generic;
 //using System.Linq;
 
-//namespace Sumo.GIS.Evaluators
+//namespace Sumo.GIS.SpatialFunctions
 //{
 //    public class PolygonEvaluator : RegionEvaluator
 //    {

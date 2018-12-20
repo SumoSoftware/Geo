@@ -1,7 +1,7 @@
 ﻿//using Sumo.GIS.Features;
 //using System;
 
-//namespace Sumo.GIS.Evaluators
+//namespace Sumo.GIS.SpatialFunctions
 //{
 //    public class EvaluatorFactory : IEvaluatorFactory
 //    {

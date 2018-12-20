@@ -2,7 +2,7 @@
 //using Sumo.GIS.Geometries;
 //using System;
 
-//namespace Sumo.GIS.Evaluators
+//namespace Sumo.GIS.SpatialFunctions
 //{
 //    //todo: aim to remove the concept of optimized evaluators
 //    // it should be possible to run the optimization process once per region, or on region changes

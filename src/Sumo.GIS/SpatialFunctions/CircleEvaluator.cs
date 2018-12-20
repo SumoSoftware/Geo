@@ -2,7 +2,7 @@
 //using Sumo.GIS.Geometries;
 //using System;
 
-//namespace Sumo.GIS.Evaluators
+//namespace Sumo.GIS.SpatialFunctions
 //{
 //    public class CircleEvaluator : RegionEvaluator
 //    {
