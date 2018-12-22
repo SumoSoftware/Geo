@@ -139,10 +139,10 @@ namespace Sumo.GIS.GeometricFigures
             return GetDistance(point.Latitude, point.Longitude, units);
         }
 
-        public Angle GetHeading(double latitude, double longitude)
+        public Angle GetHeading(double otherLatitude, double otherLongitude)
         {
-            var xDelta = GetDistance(Latitude, Longitude, latitude, Longitude, UnitsOfLength.NauticalMile);
-            var yDelta = GetDistance(Latitude, Longitude, Latitude, longitude, UnitsOfLength.NauticalMile);
+            var xDelta = GetDistance(Latitude, Longitude, otherLatitude, Longitude, UnitsOfLength.NauticalMile);
+            var yDelta = GetDistance(Latitude, Longitude, Latitude, otherLongitude, UnitsOfLength.NauticalMile);
             var degrees = Math.Atan2(yDelta.Value, xDelta.Value).ToDegrees();
             return new Angle(degrees, UnitsOfAngle.Degree);
         }

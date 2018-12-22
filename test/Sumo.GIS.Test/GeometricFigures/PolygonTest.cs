@@ -20,7 +20,7 @@ namespace Sumo.GIS.GeometricFigures
 
             var rectangleArea = rectangle.GetArea(UnitsOfLength.Mile);
             var polygonArea = polygon.GetArea(UnitsOfLength.Mile);
-
+            Assert.AreEqual(Math.Round(rectangleArea.Value, 3), Math.Round(polygonArea.Value, 3));
         }
 
         [TestMethod]

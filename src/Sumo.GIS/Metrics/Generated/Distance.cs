@@ -69,5 +69,34 @@ namespace Sumo.GIS.Metrics
         {
             return value.Value;
         }
+
+        public static Distance operator +(Distance distance1, Distance distance2)
+        {
+            var value = distance1.Value + distance2.ConvertTo(distance1.Units).Value;
+            return new Distance(value, distance1.Units);
+        }
+
+        public static Distance operator -(Distance distance1, Distance distance2)
+        {
+            var value = distance1.Value - distance2.ConvertTo(distance1.Units).Value;
+            return new Distance(value, distance1.Units);
+        }
+
+        public static Distance operator *(Distance distance, double operand)
+        {
+            var value = distance.Value * operand;
+            return new Distance(value, distance.Units);
+        }
+
+        public static Distance operator /(Distance distance, double denominator)
+        {
+            if(denominator == 0.0)
+            {
+                throw new ArgumentOutOfRangeException($"{nameof(denominator)} out of range. Divsion by zero.");
+            }
+            var value = distance.Value / denominator;
+            return new Distance(value, distance.Units);
+        }
+
     }
 }

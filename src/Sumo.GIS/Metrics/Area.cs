@@ -55,6 +55,9 @@ namespace Sumo.GIS.Metrics
                 return this;
             }
 
+            //tood: fix Area.ConvertTo()
+            // this method isn't working. I think we need to take the square root of the area, convert to the new units and then square the new value for the correct area.
+            // other ideas: https://www.varsitytutors.com/hotmath/hotmath_help/topics/convert-units-of-area-and-volume
             switch (units)
             {
                 case UnitsOfLength.Foot:
