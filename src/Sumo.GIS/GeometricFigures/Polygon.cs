@@ -27,7 +27,21 @@ namespace Sumo.GIS.GeometricFigures
 
         public virtual Area GetArea()
         {
+            //https://www.wikihow.com/Calculate-the-Area-of-a-Polygon
             throw new NotImplementedException();
+        }
+
+        public Point GetCentroid()
+        {
+            var avgLatitude = this.Sum((p) => p.Latitude) / Count;
+            var avgLongitude = this.Sum((p) => p.Longitude) / Count;
+            var avgElevation = new Distance(this.Sum((p) => p.Elevation.ConvertTo(UnitsOfLength.Meter).Value) / Count, UnitsOfLength.Meter);
+            return new Point(avgLatitude, avgLongitude, avgElevation);
+        }
+
+        public Distance GetPerimeter()
+        {
+            return GetDistance();
         }
     }
 }

@@ -29,9 +29,23 @@ namespace Sumo.GIS.GeometricFigures
 
         public Area GetArea()
         {
-            // pi r^2
             var area = Math.PI * Math.Pow(Radius.Value, 2);
             return new Area(area, Radius.Units);
+        }
+
+        public Distance GetPerimeter()
+        {
+            return GetCircumference();
+        }
+
+        public Distance GetCircumference()
+        {
+            return new Distance(2 * Math.PI * Radius.Value, Radius.Units);
+        }
+
+        public Point GetCentroid()
+        {
+            return Center;
         }
 
         //protected override void SetBounds()

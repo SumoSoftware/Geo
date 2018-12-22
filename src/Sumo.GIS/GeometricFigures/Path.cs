@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Sumo.GIS.Metrics;
+using System.Collections.Generic;
 
 namespace Sumo.GIS.GeometricFigures
 {
@@ -10,6 +11,16 @@ namespace Sumo.GIS.GeometricFigures
 
         public Path(IEnumerable<Point> points) : base(points)
         {
+        }
+
+        public Distance GetDistance()
+        {
+            var value = 0.0;
+            for (var i = 0; i < Count - 2; ++i)
+            {
+                value += this[i].GetDistance(this[i + 1], UnitsOfLength.NauticalMile).Value;
+            }
+            return new Distance(value, UnitsOfLength.NauticalMile);
         }
     }
 }
