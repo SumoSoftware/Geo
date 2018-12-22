@@ -64,5 +64,10 @@ namespace Sumo.GIS.Metrics
         {
             return distance1.Value >= distance2.ConvertTo(distance1.Units).Value;
         }
+
+        public static explicit operator double(Distance value)
+        {
+            return value.Value;
+        }
     }
 }

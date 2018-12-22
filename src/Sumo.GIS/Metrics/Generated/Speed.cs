@@ -64,5 +64,10 @@ namespace Sumo.GIS.Metrics
         {
             return speed1.Distance.Value >= speed2.ConvertTo(speed1.Units).Distance.ConvertTo(speed1.Distance.Units).Value;
         }
+
+        public static explicit operator double(Speed value)
+        {
+            return (double)value.Distance;
+        }
     }
 }

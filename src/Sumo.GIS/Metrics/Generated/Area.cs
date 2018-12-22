@@ -44,5 +44,10 @@ namespace Sumo.GIS.Metrics
         {
             return !(area1 == area2);
         }
+
+        public static explicit operator double(Area value)
+        {
+            return value.Value;
+        }
     }
 }

@@ -44,5 +44,10 @@ namespace Sumo.GIS.Metrics
         {
             return !(heading1 == heading2);
         }
+
+        public static explicit operator double(Angle value)
+        {
+            return value.Value;
+        }
     }
 }
