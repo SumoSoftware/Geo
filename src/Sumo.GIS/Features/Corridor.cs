@@ -15,7 +15,7 @@
 //        }
 
 //        private double _widthInNauticalMiles;
-
+//todo: rename stroke to buffer
 //        private Distance _stroke;
 //        public Distance Stroke
 //        {
