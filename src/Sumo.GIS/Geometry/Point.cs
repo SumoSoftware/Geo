@@ -139,7 +139,7 @@ namespace Sumo.GIS.Geometry
             return GetDistance(point.Latitude, point.Longitude, units);
         }
 
-        public Angle GetHeading(double otherLatitude, double otherLongitude)
+        public Angle GetAzimuth(double otherLatitude, double otherLongitude)
         {
             var xDelta = GetDistance(Latitude, Longitude, otherLatitude, Longitude, UnitsOfLength.NauticalMile);
             var yDelta = GetDistance(Latitude, Longitude, Latitude, otherLongitude, UnitsOfLength.NauticalMile);
@@ -147,19 +147,19 @@ namespace Sumo.GIS.Geometry
             return new Angle(degrees, UnitsOfAngle.Degree);
         }
 
-        public Angle GetHeading(Point point)
+        public Angle GetAzimuth(Point point)
         {
             if (point == null)
             {
                 throw new ArgumentNullException(nameof(point));
             }
 
-            return GetHeading(point.Latitude, point.Longitude);
+            return GetAzimuth(point.Latitude, point.Longitude);
         }
 
         public Displacement GetDisplacement(double latitude, double longitude, UnitsOfLength units = UnitsOfLength.NauticalMile)
         {
-            return new Displacement(this, GetHeading(latitude, longitude), GetDistance(latitude, longitude, units));
+            return new Displacement(this, GetAzimuth(latitude, longitude), GetDistance(latitude, longitude, units));
         }
 
         public Displacement GetDisplacement(Point point, UnitsOfLength units = UnitsOfLength.NauticalMile)

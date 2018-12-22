@@ -59,9 +59,9 @@ namespace Sumo.GIS.Geometry
             return _coordinates[0].GetDistance(_coordinates[1], units);
         }
 
-        public Angle GetHeading()
+        public Angle Azimuth()
         {
-            return _coordinates[0].GetHeading(_coordinates[1]);
+            return _coordinates[0].GetAzimuth(_coordinates[1]);
         }
 
         public override string ToString()
