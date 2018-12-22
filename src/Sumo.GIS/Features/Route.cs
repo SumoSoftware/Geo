@@ -5,17 +5,17 @@
 
 //namespace Sumo.GIS.Features
 //{
-//    public partial class Corridor : GeoPointCollection, IEquatable<Corridor>
+//    public partial class Route : PointCollection, IEquatable<Route>
 //    {
-//        public Corridor() { }
+//        public Route() { }
 
-//        public Corridor(IEnumerable<Point> points, Distance stroke) : base(points)
+//        public Route(IEnumerable<Point> points, Distance stroke) : base(points)
 //        {
 //            Stroke = stroke ?? throw new ArgumentNullException(nameof(stroke));
 //        }
 
 //        private double _widthInNauticalMiles;
-//todo: rename stroke to buffer
+//        todo: rename stroke to buffer
 //        private Distance _stroke;
 //        public Distance Stroke
 //        {

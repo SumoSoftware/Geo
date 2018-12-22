@@ -5,7 +5,7 @@
 
 //namespace Sumo.GIS.Features
 //{
-//    public partial class Corridor : GeoPointCollection, IEquatable<Corridor>
+//    public partial class Route : GeoPointCollection, IEquatable<Corridor>
 //    {
 //        public override bool Equals(object obj)
 //        {
