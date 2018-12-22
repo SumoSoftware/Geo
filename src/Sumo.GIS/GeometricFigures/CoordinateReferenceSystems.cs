@@ -1,4 +1,4 @@
-﻿namespace Sumo.GIS.Geometries
+﻿namespace Sumo.GIS.GeometricFigures
 {
     public enum CoordinateReferenceSystems
     {

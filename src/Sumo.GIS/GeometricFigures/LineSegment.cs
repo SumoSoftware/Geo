@@ -1,9 +1,9 @@
 ﻿using Sumo.GIS.Metrics;
 using System;
 
-namespace Sumo.GIS.Geometries
+namespace Sumo.GIS.GeometricFigures
 {
-    public partial class LineSegment : IGeometry
+    public partial class LineSegment : IFigure
     {
         public LineSegment() : this(new Point(), new Point())
         {

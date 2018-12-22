@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Sumo.GIS.Geometries
+namespace Sumo.GIS.GeometricFigures
 {
-    public partial class PointCollection : List<Point>, IGeometry
+    public partial class PointCollection : List<Point>, IFigure
     {
         public PointCollection()
         {

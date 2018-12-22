@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Sumo.GIS.Geometries
+namespace Sumo.GIS.GeometricFigures
 {
     public partial class PointCollection : IEquatable<PointCollection>
     {

@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Sumo.GIS.Geometries
+namespace Sumo.GIS.GeometricFigures
 {
     public partial class Circle : IEquatable<Circle>
     {

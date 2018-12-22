@@ -3,12 +3,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Sumo.GIS.Geometries
+namespace Sumo.GIS.GeometricFigures
 {
     /// <summary>
     /// first and last point must be identical so if they aren't we add a point to close the polygon
     /// </summary>
-    public class Polygon : Path, IRegion
+    public class Polygon : Path, IShape
     {
         public Polygon() : base() { }
 

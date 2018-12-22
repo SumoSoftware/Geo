@@ -1,18 +1,18 @@
 ﻿using Sumo.GIS.Metrics;
 using System;
 
-namespace Sumo.GIS.Geometries
+namespace Sumo.GIS.GeometricFigures
 {
-    public partial class Box : Polygon
+    public partial class Rectangle : Polygon
     {
-        public Box()
+        public Rectangle()
             : base(new Point[] { new Point(), new Point(), new Point(), new Point() })
         {
             _northWest = this[0];
             _southEast = this[2];
         }
 
-        public Box(Point northWest, Point southEast)
+        public Rectangle(Point northWest, Point southEast)
             : base(new Point[] { northWest, new Point(northWest.Latitude, southEast.Longitude), southEast, new Point(southEast.Latitude, northWest.Longitude) })
         {
             _northWest = northWest ?? throw new ArgumentNullException(nameof(northWest));

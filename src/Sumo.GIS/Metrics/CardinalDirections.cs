@@ -1,4 +1,4 @@
-﻿namespace Sumo.GIS.Geometries
+﻿namespace Sumo.GIS.Metrics
 {
     public enum CardinalDirections
     {

@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Sumo.GIS.Geometries
+namespace Sumo.GIS.Metrics
 {
     //todo: finish implementing bearing
     public class Bearing

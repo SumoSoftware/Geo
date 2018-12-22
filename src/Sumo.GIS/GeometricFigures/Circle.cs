@@ -1,9 +1,9 @@
 ﻿using Sumo.GIS.Metrics;
 using System;
 
-namespace Sumo.GIS.Geometries
+namespace Sumo.GIS.GeometricFigures
 {
-    public partial class Circle : IRegion
+    public partial class Circle : IShape
     {
         public Circle() { }
 

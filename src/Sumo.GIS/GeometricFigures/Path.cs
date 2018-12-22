@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 
-namespace Sumo.GIS.Geometries
+namespace Sumo.GIS.GeometricFigures
 {
-    public class Path : PointCollection, IGeometry
+    public class Path : PointCollection, IFigure
     {
         public Path()
         {
