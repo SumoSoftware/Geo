@@ -4,7 +4,7 @@ namespace Sumo.GIS.GeometricFigures
 {
     public interface IShape : IFigure 
     {
-        Area GetArea();
+        Area GetArea(UnitsOfLength units);
         Distance GetPerimeter();
         Point GetCentroid();
     }

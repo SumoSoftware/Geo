@@ -25,9 +25,9 @@ namespace Sumo.GIS.GeometricFigures
             }
         }
 
-        public virtual Area GetArea()
+        public virtual Area GetArea(UnitsOfLength units)
         {
-            //https://www.wikihow.com/Calculate-the-Area-of-a-Polygon
+            //https://planetcalc.com/1466/
             throw new NotImplementedException();
         }
 

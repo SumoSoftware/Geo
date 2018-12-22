@@ -27,10 +27,10 @@ namespace Sumo.GIS.GeometricFigures
             }
         }
 
-        public Area GetArea()
+        public Area GetArea(UnitsOfLength units)
         {
-            var area = Math.PI * Math.Pow(Radius.Value, 2);
-            return new Area(area, Radius.Units);
+            var area = Math.PI * Math.Pow(Radius.ConvertTo(units).Value, 2);
+            return new Area(area, units);
         }
 
         public Distance GetPerimeter()

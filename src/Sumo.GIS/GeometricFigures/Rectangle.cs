@@ -52,11 +52,11 @@ namespace Sumo.GIS.GeometricFigures
             }
         }
 
-        public override Area GetArea()
+        public override Area GetArea(UnitsOfLength units)
         {
-            var width = NorthWest.GetDistance(NorthWest.Latitude, SouthEast.Longitude);
-            var height = NorthWest.GetDistance(SouthEast.Latitude, NorthWest.Longitude);
-            return new Area(width.Value * height.Value, UnitsOfLength.NauticalMile);
+            var width = NorthWest.GetDistance(NorthWest.Latitude, SouthEast.Longitude).ConvertTo(units);
+            var height = NorthWest.GetDistance(SouthEast.Latitude, NorthWest.Longitude).ConvertTo(units);
+            return new Area(width.Value * height.Value, units);
         }
     }
 }
