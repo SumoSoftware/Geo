@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using Sumo.GIS.GeometricFigures;
+using Sumo.GIS.Geometry;
 
 namespace Sumo.GIS.Features
 {

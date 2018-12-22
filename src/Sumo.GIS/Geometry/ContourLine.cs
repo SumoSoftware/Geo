@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Sumo.GIS.GeometricFigures
+namespace Sumo.GIS.Geometry
 {
     /// <summary>
     /// https://www.nrcs.usda.gov/Internet/FSE_DOCUMENTS/nrcs144p2_051844.pdf

@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Sumo.GIS.GeometricFigures
+namespace Sumo.GIS.Geometry
 {
     /// <summary>
     /// first and last point must be identical so if they aren't we add a point to close the polygon

@@ -1,4 +1,4 @@
-﻿using Sumo.GIS.GeometricFigures;
+﻿using Sumo.GIS.Geometry;
 using System;
 
 namespace Sumo.GIS.Metrics

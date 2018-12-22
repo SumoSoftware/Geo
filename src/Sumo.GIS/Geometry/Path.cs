@@ -1,7 +1,7 @@
 ﻿using Sumo.GIS.Metrics;
 using System.Collections.Generic;
 
-namespace Sumo.GIS.GeometricFigures
+namespace Sumo.GIS.Geometry
 {
     public class Path : PointCollection, IFigure
     {

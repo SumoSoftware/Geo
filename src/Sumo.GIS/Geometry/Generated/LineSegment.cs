@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Sumo.GIS.GeometricFigures
+namespace Sumo.GIS.Geometry
 {
     public partial class LineSegment : IEquatable<LineSegment>
     {

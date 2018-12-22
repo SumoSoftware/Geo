@@ -1,6 +1,6 @@
 ﻿using Sumo.GIS.Metrics;
 
-namespace Sumo.GIS.GeometricFigures
+namespace Sumo.GIS.Geometry
 {
     public interface IShape : IFigure 
     {
