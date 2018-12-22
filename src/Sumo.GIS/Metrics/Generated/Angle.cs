@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 namespace Sumo.GIS.Metrics
 {
+    //todo: add IComparer to all the classes with IComparable
     public partial class Angle : IEquatable<Angle>, IComparable<Angle>, IComparable
     {
         public int CompareTo(object obj)
