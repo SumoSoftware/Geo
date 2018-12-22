@@ -1,15 +1,13 @@
-﻿//using System.Collections.Generic;
-//using Sumo.GIS.Geometries;
+﻿using Sumo.GIS.GeometricFigures;
+using System.Collections.Generic;
 
-//namespace Sumo.GIS.Features
-//{
-//    public class ContourMap : Geography
-//    {
-//        public List<Polygon> ContourLines { get; set; }
+namespace Sumo.GIS.Features
+{
+    public class ContourMap : IModel
+    {
+        public string Name { get; set; }
+        public Dictionary<string, object> Properties { get; } = new Dictionary<string, object>();
 
-//        protected override Box GetBounds()
-//        {
-//            throw new System.NotImplementedException();
-//        }
-//    }
-//}
+        public List<ContourLine> Lines { get; } = new List<ContourLine>();
+    }
+}
