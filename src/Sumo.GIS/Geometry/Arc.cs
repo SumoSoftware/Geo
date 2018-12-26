@@ -3,7 +3,7 @@ using System;
 
 namespace Sumo.GIS.Geometry
 {
-    public class Arc : LineSegment, IFigure, IPath, IShape
+    public class Arc : LineSegment, IPath, IShape
     {
         public enum ArcTypes
         {
