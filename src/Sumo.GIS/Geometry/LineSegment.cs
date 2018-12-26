@@ -3,7 +3,7 @@ using System;
 
 namespace Sumo.GIS.Geometry
 {
-    public partial class LineSegment : IFigure
+    public partial class LineSegment : IFigure, IPath
     {
         public LineSegment() : this(new Point(), new Point())
         {
@@ -54,7 +54,7 @@ namespace Sumo.GIS.Geometry
         /// returns geodesic distance (great arc)
         /// </summary>
         /// <returns></returns>
-        public Distance GetDistance(UnitsOfLength units = UnitsOfLength.NauticalMile)
+        public virtual Distance GetDistance(UnitsOfLength units)
         {
             return _coordinates[0].GetDistance(_coordinates[1], units);
         }
