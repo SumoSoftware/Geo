@@ -14,6 +14,8 @@ Questions GIS can provide information on:
 	modeling- What if ....
 
 
+http://wiki.gis.com/wiki/index.php/Feature_class
+
 https://en.wikipedia.org/wiki/Geography_Markup_Language
 http://www.opengeospatial.org/standards/gml
 https://developers.google.com/kml/
