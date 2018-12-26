@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1" GroupingSetting="Access" MembersFormat="NameAndType">
   <Class Name="Sumo.GIS.Geometry.Arc" BaseTypeListCollapsed="true">
-    <Position X="27" Y="4.75" Width="2" />
+    <Position X="23.5" Y="4.75" Width="2" />
     <Compartments>
       <Compartment Name="Nested Types" Collapsed="false" />
     </Compartments>
@@ -16,10 +16,10 @@
       <HashCode>QAAIAABAAAAAAAAAAAAAAAAAAAAgAAEAAQAAEAAIAAA=</HashCode>
       <FileName>Geometry\Arc.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" Collapsed="true" />
+    <Lollipop Position="0.2" />
   </Class>
   <Class Name="Sumo.GIS.Geometry.Circle" BaseTypeListCollapsed="true">
-    <Position X="20.5" Y="4.75" Width="2.5" />
+    <Position X="17.25" Y="4.75" Width="2.5" />
     <TypeIdentifier>
       <HashCode>CAAIAAAAAAIAAAAAgAAAAAAAAAAgAIEAAAAAEAAIAiA=</HashCode>
       <FileName>Geometry\Generated\Circle.cs</FileName>
@@ -27,22 +27,22 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="Sumo.GIS.Geometry.ContourLine">
-    <Position X="14.5" Y="7.75" Width="2.25" />
+    <Position X="11" Y="7.75" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Geometry\ContourLine.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Sumo.GIS.Geometry.LineSegment" BaseTypeListCollapsed="true">
-    <Position X="23.75" Y="4.75" Width="2.25" />
+    <Position X="20" Y="4.75" Width="3" />
     <TypeIdentifier>
-      <HashCode>AAAAAABAAAAIAAAEiAAAAAAAAAAAAIAAAAAAAAgICiA=</HashCode>
+      <HashCode>AAAAAABAAAAAABAEiAAAAAAAAAAAAIAEAAAAAAgICiA=</HashCode>
       <FileName>Geometry\Generated\LineSegment.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="Sumo.GIS.Geometry.Path">
-    <Position X="12" Y="4.75" Width="2" />
+    <Position X="8.5" Y="4.75" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgIAAA=</HashCode>
       <FileName>Geometry\Path.cs</FileName>
@@ -52,13 +52,13 @@
   <Class Name="Sumo.GIS.Geometry.Point" BaseTypeListCollapsed="true">
     <Position X="0.5" Y="4.75" Width="3.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAABAQEAAAAAEgMAIAACAAAAAAIAAAAAAAAAAEiA=</HashCode>
+      <HashCode>AAAAAABAQEAAAAAEgMAIAACAAEAAAIAAAAAAAAAAEiA=</HashCode>
       <FileName>Geometry\Generated\Point.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="Sumo.GIS.Geometry.Polygon">
-    <Position X="14.75" Y="4.75" Width="2" />
+    <Position X="11.25" Y="4.75" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAgAAEAAAAAEAAAAAA=</HashCode>
       <FileName>Geometry\Polygon.cs</FileName>
@@ -66,32 +66,25 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="Sumo.GIS.Geometry.Rectangle">
-    <Position X="17.5" Y="4.75" Width="2" />
+    <Position X="14" Y="4.75" Width="3" />
     <TypeIdentifier>
-      <HashCode>AAACAAABAAAAAAAAAAAAAAAAAAAAAAgAAAAAEAAACAA=</HashCode>
+      <HashCode>AAACAABBAAAAABAAiAAAAAAAAAAgAAkEAAAAEAgICAA=</HashCode>
       <FileName>Geometry\Rectangle.cs</FileName>
     </TypeIdentifier>
+    <Lollipop Position="0.2" />
   </Class>
   <Class Name="Sumo.GIS.Geometry.FigureCollection&lt;T&gt;">
-    <Position X="9" Y="2.25" Width="2" />
+    <Position X="5.5" Y="2.25" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Geometry\FigureCollection.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Sumo.GIS.Geometry.PointCollection">
-    <Position X="8.75" Y="4.75" Width="2.5" />
+    <Position X="5.25" Y="4.75" Width="2.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAEgAAAAAAAAQAAAIAAAAAAAAAAAiA=</HashCode>
       <FileName>Geometry\Generated\PointCollection.cs</FileName>
-    </TypeIdentifier>
-    <Lollipop Position="0.2" />
-  </Class>
-  <Class Name="Sumo.GIS.Geometry.Position">
-    <Position X="5" Y="4.75" Width="2.25" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAEgAAAAAAAAEAAAIAAAAAAAAAAAiA=</HashCode>
-      <FileName>Geometry\Position.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
@@ -109,8 +102,8 @@
       <FileName>Geometry\IShape.cs</FileName>
     </TypeIdentifier>
   </Interface>
-  <Interface Name="Sumo.GIS.Geometry.IPath" Collapsed="true">
-    <Position X="3.25" Y="0.5" Width="1.5" />
+  <Interface Name="Sumo.GIS.Geometry.IPath">
+    <Position X="3" Y="2" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgIAAA=</HashCode>
       <FileName>Geometry\IPath.cs</FileName>
