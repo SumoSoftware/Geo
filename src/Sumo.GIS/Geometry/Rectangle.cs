@@ -83,9 +83,9 @@ namespace Sumo.GIS.Geometry
 
         public Point GetCentroid()
         {
-            var avgLatitude = _points.Sum((p) => p.Latitude) / 4;
-            var avgLongitude = _points.Sum((p) => p.Longitude) / 4;
-            var avgElevation = new Distance(_points.Sum((p) => p.Elevation.ConvertTo(UnitsOfLength.Meter).Value) / 4, UnitsOfLength.Meter);
+            var avgLatitude = (_northWest.Latitude + _southEast.Latitude) / 2;
+            var avgLongitude = (_northWest.Longitude + _southEast.Longitude) / 2;
+            var avgElevation = (_northWest.Elevation + _southEast.Elevation) / 2;
             return new Point(avgLatitude, avgLongitude, avgElevation);
         }
 
