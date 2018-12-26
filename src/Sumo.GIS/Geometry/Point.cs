@@ -139,22 +139,22 @@ namespace Sumo.GIS.Geometry
             return GetDistance(point.Latitude, point.Longitude, units);
         }
 
-        public Angle GetAzimuth(double otherLatitude, double otherLongitude)
+        public Angle GetAzimuth(double otherLatitude, double otherLongitude, UnitsOfAngle units = UnitsOfAngle.Degree)
         {
             var xDelta = GetDistance(Latitude, Longitude, otherLatitude, Longitude, UnitsOfLength.NauticalMile);
             var yDelta = GetDistance(Latitude, Longitude, Latitude, otherLongitude, UnitsOfLength.NauticalMile);
-            var degrees = Math.Atan2(yDelta.Value, xDelta.Value).ToDegrees();
-            return new Angle(degrees, UnitsOfAngle.Degree);
+            var radians = Math.Atan2(yDelta.Value, xDelta.Value);
+            return new Angle(radians, UnitsOfAngle.Radian).ConvertTo(units);
         }
 
-        public Angle GetAzimuth(Point point)
+        public Angle GetAzimuth(Point point, UnitsOfAngle units = UnitsOfAngle.Degree)
         {
             if (point == null)
             {
                 throw new ArgumentNullException(nameof(point));
             }
 
-            return GetAzimuth(point.Latitude, point.Longitude);
+            return GetAzimuth(point.Latitude, point.Longitude, units);
         }
 
         public Displacement GetDisplacement(double latitude, double longitude, UnitsOfLength units = UnitsOfLength.NauticalMile)
