@@ -51,9 +51,9 @@ namespace Sumo.GIS.Geometry
             return new Point(avgLatitude, avgLongitude, avgElevation);
         }
 
-        public Distance GetPerimeter()
+        public Distance GetPerimeter(UnitsOfLength units)
         {
-            return GetDistance();
+            return GetDistance(units);
         }
     }
 }

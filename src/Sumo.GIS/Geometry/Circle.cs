@@ -33,9 +33,9 @@ namespace Sumo.GIS.Geometry
             return new Area(area, units);
         }
 
-        public Distance GetPerimeter()
+        public Distance GetPerimeter(UnitsOfLength units)
         {
-            return GetCircumference();
+            return GetCircumference().ConvertTo(units);
         }
 
         public Distance GetCircumference()

@@ -50,5 +50,17 @@ namespace Sumo.GIS.Metrics
         {
             return value.Value;
         }
+
+        public static Angle operator +(Angle angle1, Angle angle2)
+        {
+            var value = angle1.Value + angle2.ConvertTo(angle1.Units).Value;
+            return new Angle(value, angle1.Units);
+        }
+
+        public static Angle operator -(Angle angle1, Angle angle2)
+        {
+            var value = angle1.Value - angle2.ConvertTo(angle1.Units).Value;
+            return new Angle(value, angle1.Units);
+        }
     }
 }
