@@ -12,8 +12,15 @@ namespace Sumo.GIS.Metrics
             Units = units;
         }
 
-        public Distance(Distance distance) : this(distance.Value, distance.Units)
+        public Distance(Distance distance)
         {
+            if (distance == null)
+            {
+                throw new ArgumentNullException(nameof(distance));
+            }
+
+            Value = distance.Value;
+            Units = distance.Units;
         }
 
         public double Value { get; }
