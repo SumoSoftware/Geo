@@ -6,7 +6,7 @@ namespace Sumo.GIS.Geometry
     /// <summary>
     /// linear feature  A geographic feature that can be represented by a line or set of lines.  For example, rivers, roads, and electric and telecommunication networks are all linear features.  
     /// </summary>
-    public class Path : PointCollection, IFigure, IPath
+    public class Path : PointCollection, IPath
     {
         public Path()
         {
