@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Sumo.GIS.Geometry
 {
-    public partial class PointCollection : List<Point>, IFigure
+    public partial class PointCollection : FigureCollection<Point>, IFigure
     {
         public PointCollection()
         {
@@ -17,6 +17,12 @@ namespace Sumo.GIS.Geometry
             }
 
             AddRange(points);
+        }
+
+        //todo: implement GetExtent
+        public override Rectangle GetExtent()
+        {
+            throw new NotImplementedException();
         }
 
         public override string ToString()

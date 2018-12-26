@@ -1,5 +1,4 @@
 ﻿using Sumo.GIS.Metrics;
-using System;
 using System.Collections.Generic;
 
 namespace Sumo.GIS.Geometry
@@ -15,38 +14,11 @@ namespace Sumo.GIS.Geometry
             Elevation = new Distance(0.0, UnitsOfLength.Foot);
         }
 
-        public ContourLine(IEnumerable<Point> points) : base(points)
+        public ContourLine(IEnumerable<Point> points, Distance elevation) : base(points)
         {
-            var i = -1;
-            foreach (var point in points)
-            {
-                ++i;
-                if (Elevation == null)
-                {
-                    Elevation = new Distance(point.Elevation);
-                    continue;
-                }
-                if (point.Elevation != Elevation)
-                {
-                    throw new ArgumentOutOfRangeException($"{nameof(points)} contains an invalid elevation at index {i}.");
-                }
-            }
+            Elevation = new Distance(elevation);
         }
 
-        public Distance Elevation { get; private set; }
-
-        public new void Add(Point point)
-        {
-            if (Count == 0)
-            {
-                Elevation = new Distance(point.Elevation);
-            }
-            else if (point.Elevation != Elevation)
-            {
-                throw new ArgumentOutOfRangeException($"{nameof(point)}.Elevation doesn't match contour line elevation.");
-            }
-
-            base.Add(point);
-        }
+        public Distance Elevation { get; set; }
     }
 }

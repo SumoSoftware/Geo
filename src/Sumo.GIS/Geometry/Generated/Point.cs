@@ -1,5 +1,4 @@
-﻿using Sumo.GIS.Metrics;
-using System;
+﻿using System;
 using System.Collections.Generic;
 
 namespace Sumo.GIS.Geometry
@@ -15,8 +14,7 @@ namespace Sumo.GIS.Geometry
         {
             return other != null &&
                    Latitude == other.Latitude &&
-                   Longitude == other.Longitude &&
-                   EqualityComparer<Distance>.Default.Equals(Elevation, other.Elevation);
+                   Longitude == other.Longitude;
         }
 
         public override int GetHashCode()
@@ -24,7 +22,6 @@ namespace Sumo.GIS.Geometry
             var hashCode = 1960202551;
             hashCode = hashCode * -1521134295 + Latitude.GetHashCode();
             hashCode = hashCode * -1521134295 + Longitude.GetHashCode();
-            hashCode = hashCode * -1521134295 + EqualityComparer<Distance>.Default.GetHashCode(Elevation);
             return hashCode;
         }
 
