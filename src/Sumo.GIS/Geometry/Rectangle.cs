@@ -1,22 +1,33 @@
 ﻿using Sumo.GIS.Metrics;
 using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Sumo.GIS.Geometry
 {
-    public partial class Rectangle : Polygon
+    public partial class Rectangle : IPath, IShape
     {
         public Rectangle()
-            : base(new Point[] { new Point(), new Point(), new Point(), new Point() })
         {
+            _points = new Point[] { new Point(), new Point(), new Point(), new Point() };
             _northWest = this[0];
             _southEast = this[2];
         }
 
         public Rectangle(Point northWest, Point southEast)
-            : base(new Point[] { northWest, new Point(northWest.Latitude, southEast.Longitude), southEast, new Point(southEast.Latitude, northWest.Longitude) })
         {
-            _northWest = northWest ?? throw new ArgumentNullException(nameof(northWest));
-            _southEast = southEast ?? throw new ArgumentNullException(nameof(southEast));
+            _points = new Point[4];
+            NorthWest = northWest ?? throw new ArgumentNullException(nameof(northWest));
+            SouthEast = southEast ?? throw new ArgumentNullException(nameof(southEast));
+        }
+
+        private Point[] _points;
+
+        public Point this[int i]
+        {
+            get => _points[i];
+            private set => _points[i] = value;
         }
 
         private Point _northWest;
@@ -52,11 +63,45 @@ namespace Sumo.GIS.Geometry
             }
         }
 
-        public override Area GetArea(UnitsOfLength units)
+        public Point Origin => this[0];
+
+        public Point Terminus => this[0];
+
+        public Area GetArea(UnitsOfLength units)
         {
             var width = NorthWest.GetDistance(NorthWest.Latitude, SouthEast.Longitude).ConvertTo(units);
             var height = NorthWest.GetDistance(SouthEast.Latitude, NorthWest.Longitude).ConvertTo(units);
             return new Area(width.Value * height.Value, units);
+        }
+
+        public Distance GetPerimeter(UnitsOfLength units)
+        {
+            var width = NorthWest.GetDistance(NorthWest.Latitude, SouthEast.Longitude).ConvertTo(units);
+            var height = NorthWest.GetDistance(SouthEast.Latitude, NorthWest.Longitude).ConvertTo(units);
+            return width * 2 + height * 2;
+        }
+
+        public Point GetCentroid()
+        {
+            var avgLatitude = _points.Sum((p) => p.Latitude) / 4;
+            var avgLongitude = _points.Sum((p) => p.Longitude) / 4;
+            var avgElevation = new Distance(_points.Sum((p) => p.Elevation.ConvertTo(UnitsOfLength.Meter).Value) / 4, UnitsOfLength.Meter);
+            return new Point(avgLatitude, avgLongitude, avgElevation);
+        }
+
+        public Distance GetDistance(UnitsOfLength units)
+        {
+            return GetPerimeter(units);
+        }
+
+        public IEnumerator<Point> GetEnumerator()
+        {
+            return (_points as IEnumerable<Point>).GetEnumerator();
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return _points.GetEnumerator();
         }
     }
 }
