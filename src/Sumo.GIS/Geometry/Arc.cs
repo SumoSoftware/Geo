@@ -13,6 +13,8 @@ namespace Sumo.GIS.Geometry
 
         public Arc()
         {
+            Center = new Point();
+            Radius = new Distance();
         }
 
         public Arc(Point center, Distance radius, ArcTypes type, LineSegment lineSegment) : base(lineSegment)

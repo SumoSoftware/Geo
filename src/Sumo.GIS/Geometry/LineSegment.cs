@@ -1,5 +1,7 @@
 ﻿using Sumo.GIS.Metrics;
 using System;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace Sumo.GIS.Geometry
 {
@@ -21,33 +23,33 @@ namespace Sumo.GIS.Geometry
                 throw new ArgumentNullException(nameof(point2));
             }
 
-            _coordinates = new Point[] { point1, point2 };
+            _points = new Point[] { point1, point2 };
         }
 
         public LineSegment(double lat1, double lon1, double lat2, double lon2) : this(new Point(lat1, lon1), new Point(lat2, lon2))
         {
         }
 
-        public LineSegment(LineSegment lineSegment) : this(lineSegment?._coordinates[0], lineSegment?._coordinates[1])
+        public LineSegment(LineSegment lineSegment) : this(lineSegment?._points[0], lineSegment?._points[1])
         {
         }
 
-        private Point[] _coordinates;
+        private Point[] _points;
         public Point this[int i]
         {
-            get => _coordinates[i];
+            get => _points[i];
         }
 
         public Point Origin
         {
-            get => _coordinates[0];
-            set => _coordinates[0] = value;
+            get => _points[0];
+            set => _points[0] = value;
         }
 
         public Point Terminus
         {
-            get => _coordinates[1];
-            set => _coordinates[1] = value;
+            get => _points[1];
+            set => _points[1] = value;
         }
 
         /// <summary>
@@ -56,17 +58,27 @@ namespace Sumo.GIS.Geometry
         /// <returns></returns>
         public virtual Distance GetDistance(UnitsOfLength units)
         {
-            return _coordinates[0].GetDistance(_coordinates[1], units);
+            return _points[0].GetDistance(_points[1], units);
         }
 
         public Angle Azimuth()
         {
-            return _coordinates[0].GetAzimuth(_coordinates[1]);
+            return _points[0].GetAzimuth(_points[1]);
         }
 
         public override string ToString()
         {
-            return String.Format($"[{_coordinates[0]}, {_coordinates[1]}]");
+            return String.Format($"[{_points[0]}, {_points[1]}]");
+        }
+
+        public IEnumerator<Point> GetEnumerator()
+        {
+            return (_points as IEnumerable<Point>).GetEnumerator();
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return _points.GetEnumerator();
         }
 
         //protected override void SetBounds()
