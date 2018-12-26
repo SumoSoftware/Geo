@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Sumo.GIS.Geometry
 {
@@ -19,10 +20,11 @@ namespace Sumo.GIS.Geometry
             AddRange(points);
         }
 
-        //todo: implement GetExtent
         public override Rectangle GetExtent()
         {
-            throw new NotImplementedException();
+            var northWest = new Point(this.Max((p) => p.Latitude), this.Min((p)=> p.Longitude));
+            var southEast = new Point(this.Min((p) => p.Latitude), this.Max((p) => p.Longitude));
+            return new Rectangle(northWest, southEast);
         }
 
         public override string ToString()
