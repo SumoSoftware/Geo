@@ -7,6 +7,7 @@ namespace Sumo.GIS.Geometry
     {
         public Point()
         {
+            Elevation = new Distance(0.0, UnitsOfLength.Foot);
         }
 
         public Point(double latitude, double longitude) : this()
@@ -15,7 +16,14 @@ namespace Sumo.GIS.Geometry
             Longitude = longitude;
         }
 
-        public Point(Point point) : this(point.Latitude, point.Longitude)
+        public Point(double latitude, double longitude, Distance elevation)
+        {
+            Latitude = latitude;
+            Longitude = longitude;
+            Elevation = new Distance(elevation);
+        }
+
+        public Point(Point point) : this(point.Latitude, point.Longitude, point.Elevation)
         {
         }
 
@@ -60,6 +68,8 @@ namespace Sumo.GIS.Geometry
                 }
             }
         }
+
+        public Distance Elevation { get; set; }
 
         private Distance GetDistance(double latitude1, double longitude1, double latitude2, double longitude2, UnitsOfLength units = UnitsOfLength.NauticalMile)
         {
@@ -169,6 +179,10 @@ namespace Sumo.GIS.Geometry
 
         public override string ToString()
         {
+            if (Elevation.Value > 0.0)
+            {
+                return String.Format($"({Latitude.ToString("F5")}, {Longitude.ToString("F5")}, {Elevation.Value.ToString("F5")})");
+            }
             return String.Format($"({Latitude.ToString("F5")}, {Longitude.ToString("F5")})");
         }
     }
